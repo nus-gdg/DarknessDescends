@@ -7,24 +7,33 @@ public class Character : MonoBehaviour
 	public int totalHealth;
 	private int health;
 	public CharacterDeathEvent characterDeathEvent;
+	public AllyType characterType;
 
-    void Awake()
-    {
-        health = totalHealth;
-        if (characterDeathEvent == null) {
-        	characterDeathEvent = new CharacterDeathEvent();
-        }
-    }
+	void Awake()
+	{
+		health = totalHealth;
+		if (characterDeathEvent == null) {
+			characterDeathEvent = new CharacterDeathEvent();
+		}
+	}
 
-    void takeDamage(int i) {
-    	health -= totalHealth;
-    	if(health <= 0) {
-    		characterDeathEvent.Invoke(this);
-    		Destroy(gameObject);
-    	}
-    }
+	void takeDamage(int i) {
+		health -= i;
+		if (health <= 0) {
+			characterDeathEvent.Invoke(this);
+			Destroy(gameObject);
+		}
+	}
 
-    void OnCollisionEnter(Collision collision) {
-    	//if(collision.gameObject ... ) 
-    }
+	void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log("test");
+		Damager damageComponent = collision.gameObject.GetComponent<Damager>();
+		Debug.Log(damageComponent);
+		if (damageComponent != null) {
+			if (damageComponent.damageSource != characterType) {
+				this.takeDamage(damageComponent.damageAmount);
+				damageComponent.triggerContact();
+			}
+		}
+	}
 }
