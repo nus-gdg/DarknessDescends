@@ -25,15 +25,28 @@ public class Character : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log("test");
-		Damager damageComponent = collision.gameObject.GetComponent<Damager>();
-		Debug.Log(damageComponent);
-		if (damageComponent != null) {
-			if (damageComponent.damageSource != characterType) {
-				this.takeDamage(damageComponent.damageAmount);
-				damageComponent.triggerContact();
-			}
-		}
-	}
+    void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("test");
+        Damager damageComponent = collision.gameObject.GetComponent<Damager>();
+        Debug.Log(damageComponent);
+        if (damageComponent != null) {
+            if (damageComponent.damageSource != characterType) {
+                this.takeDamage(damageComponent.damageAmount);
+                damageComponent.triggerContact();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("trigger test");
+        Damager damageComponent = collision.gameObject.GetComponent<Damager>();
+        Debug.Log(damageComponent);
+        if (damageComponent != null) {
+            if (damageComponent.damageSource != characterType) {
+                this.takeDamage(damageComponent.damageAmount);
+                this.GetComponent<CharacterAnimator>().Hurt();
+                damageComponent.triggerContact();
+            }
+        }
+    }
 }
