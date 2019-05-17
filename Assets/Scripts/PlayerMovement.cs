@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private CharacterAnimator charAnimator;
 
     private bool isGrounded;
-    private int x;
 
     [SerializeField]
     public float movementSpeed;
@@ -25,27 +24,40 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            movementController.Move(movementSpeed, isGrounded);
+            if (Input.GetKey(KeyCode.LeftArrow)) 
+            { 
+                movementController.MoveLeft(movementSpeed);
+            }
+
+            else
+            {
+                movementController.MoveRight(movementSpeed);
+            }
+
             if (isGrounded)
             {
                 charAnimator.Move();
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        else
+        {
+            if (isGrounded)
+            {
+                movementController.Stationary();
+            }
+            charAnimator.Move(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             movementController.Jump(jumpForce);
             charAnimator.Jump();
             isGrounded = false;
-        }
-
-        else
-        {
-            charAnimator.Move(false);
         }
 
     }

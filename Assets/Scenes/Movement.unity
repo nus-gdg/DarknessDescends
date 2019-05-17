@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1250805043}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,6 +331,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1979070090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8786319597014064328, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8786319598520014584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1979070091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979070090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af0f5304ad704a368944ce72addc398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 4
+  jumpForce: 40
+--- !u!114 &1979070092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979070090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709d739aa40194171ba565922c8aa985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8786319598520014584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,6 +429,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786319597014064330, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786319597014064330, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 6.5359387
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786319597014064330, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
