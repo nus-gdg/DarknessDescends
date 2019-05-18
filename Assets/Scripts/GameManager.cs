@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour
          */
     }
 
-    void enemyDies()
+    void enemyDies(int increaseInScore)
     {
-        score++;
+        score += increaseInScore;
         enemiesDefeated++;
     }
 
