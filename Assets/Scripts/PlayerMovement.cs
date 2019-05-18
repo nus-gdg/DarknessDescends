@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private MovementController movementController;
     private CharacterAnimator charAnimator;
 
+    private int isMoving; //if isMoving is -1, it is moving left, if 1, it is moving right, else it is not moving
+    private bool isJumping;
     private bool isGrounded;
 
     [SerializeField]
@@ -17,31 +19,68 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         movementController = GetComponent<MovementController>();
         charAnimator = GetComponent<CharacterAnimator>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetAxis("Vertical") > 0 && isGrounded)
         {
-            if (Input.GetKey(KeyCode.LeftArrow)) 
-            { 
-                movementController.MoveLeft(movementSpeed);
-            }
+            isJumping = true;
+        }
 
-            else
-            {
-                movementController.MoveRight(movementSpeed);
-            }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            isMoving = 1;
+        }
 
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            isMoving = -1;
+        }
+
+        else
+        {
+            isMoving = 0;
+        }
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (isJumping)
+        {
+            movementController.Jump(jumpForce);
+            charAnimator.Jump();
+            charAnimator.Move(false);
+            isGrounded = false;
+            isJumping = false;
+        }
+
+        if (isMoving < 0)
+        {
+            movementController.MoveLeft(movementSpeed);
+            charAnimator.faceLeft();
             if (isGrounded)
             {
                 charAnimator.Move();
             }
+            isMoving = 0;
+        }
+
+        else if (isMoving > 0)
+        {
+            movementController.MoveRight(movementSpeed);
+            charAnimator.faceRight();
+            if (isGrounded)
+            {
+                charAnimator.Move();
+            }
+            isMoving = 0;
         }
 
         else
@@ -51,13 +90,6 @@ public class PlayerMovement : MonoBehaviour
                 movementController.Stationary();
             }
             charAnimator.Move(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            movementController.Jump(jumpForce);
-            charAnimator.Jump();
-            isGrounded = false;
         }
 
     }
