@@ -85,10 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
-            if (isGrounded)
-            {
-                movementController.Stationary();
-            }
+            movementController.Stationary();
             charAnimator.Move(false);
         }
 
