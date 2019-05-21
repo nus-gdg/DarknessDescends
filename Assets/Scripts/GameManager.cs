@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Text timeDisplay;
     public Text endgameDisplay;
 
+    public List <GameObject> spawnerList;
+
     void Awake()
     {
         endgameDisplay.enabled = false;
@@ -21,20 +25,18 @@ public class GameManager : MonoBehaviour
     {
         float timeElapsedFromPreviousFrame = Time.deltaTime;
         timeSinceGameStart += timeElapsedFromPreviousFrame;
-        sendSignalToSpawnPoints(timeElapsedFromPreviousFrame);
+        SendSignalToSpawnPoints(timeElapsedFromPreviousFrame);
 
         scoreDisplay.text = score.ToString();
         timeDisplay.text = timeSinceGameStart.ToString();
     }
 
-    void sendSignalToSpawnPoints(float timeElapsedFromPreviousFrame)
+    void SendSignalToSpawnPoints(float timeElapsedFromPreviousFrame)
     {
-        /*
-         * I think it makes more sense for each spawner to be in-charge of its own spawning.
-         * The GameManager will track how much time has progressed, and send this
-         * info to the spawners. Whenever enough time has elapsed in each spawner,
-         * it will shoot out the next enemy and reset the time that has passed.
-         */
+        foreach(GameObject spawner in spawnerList)
+        {
+            spawner.GetComponent<EnemySpawner>().ReceiveTimePassed(timeElapsedFromPreviousFrame);
+        }
     }
 
     public void enemyDies(int increaseInScore)
