@@ -11,25 +11,13 @@ public class MeleeWeapon : Weapon
         this.GetComponent<Animator>().SetBool("Attack", true);
     }
 
-    public bool TryToAttack() {
+    public override bool TryToAttack() {
         bool rtv = !this.GetComponent<Animator>().GetBool("Attack");
         Attack();
         return rtv;
     }
 
-    public void StopAttack() {
+    public override void StopAttack() {
         this.GetComponent<Animator>().SetBool("Attack", false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

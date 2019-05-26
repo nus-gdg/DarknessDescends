@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 7559787464993504235}
   - component: {fileID: 7559787464993504234}
   - component: {fileID: 7340971573239776407}
+  - component: {fileID: 5620611755879583106}
   m_Layer: 0
   m_Name: Snairtle
   m_TagString: Untagged
@@ -382,3 +383,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
+--- !u!114 &5620611755879583106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559787464993504226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3d8d905e6adf74cbd5116965ac8834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
+  LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
+    type: 3}
