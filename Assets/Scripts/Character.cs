@@ -29,6 +29,11 @@ public class Character : MonoBehaviour
 
 	void takeDamage(int i) {
 		health -= i;
+
+        if(i > 0) {
+            SoundController.theController.playSound(SoundController.theController.damage);
+        }
+
 		if (health <= 0) {
 			characterDeathEvent.Invoke(this);
 			Destroy(gameObject);
