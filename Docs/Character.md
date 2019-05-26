@@ -7,6 +7,14 @@ The character class acts as the exoskeleton for all units. It governs the health
 
 When the character dies, it triggers a CharacterDeathEvent, which is a UnityEvent. It passes in the Character class as a parameter to that event.
 
+Character also heandles the UI of the health bar and and reduces it accordingly. For this to work, you need to add a health bar to the prefab, positioning it right above the character. A background color to represent the health (green in this game) should then be added as a child of the health bar. The following then needs to be assigned to the Character script in the Unity editor:
+
+healthBar: the health bar gameobject
+healthBarGreen: the child of the health bar. It will be adjusted appropriately as the character takes damage. By default, it should have the scaling values of 1 for the x-value.
+healthBarLength: the length of the health bar. This will depend on how wide the sprite is.
+
+Once these values are set, the health bar will start off inactive when the character spawns. Once it takes damage, the health bar appears, showing the reduction in health.
+
 # Damager
 
 A damager interacts with the Character to cause the character to lose health. Damage is intended to be given to entities that will come into contact with the Character, such as projectiles and swords. For this to work, both the Character and the Damager must have a 2D collider attached to it. The character should have a rigid body. The damage exposes the following functionality in the unity editor:

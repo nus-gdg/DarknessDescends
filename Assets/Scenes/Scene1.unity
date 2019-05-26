@@ -187,15 +187,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8786319597014064330, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8786319597014064329, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
+    - target: {fileID: 891184212, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
@@ -410,31 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1432410445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8786319597014064328, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
-    type: 3}
-  m_PrefabInstance: {fileID: 252304453}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1432410446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432410445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f42c74165d15e458f0646a93235e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalHealth: 100
-  characterDeathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  characterType: 0
 --- !u!1 &1740966448
 GameObject:
   m_ObjectHideFlags: 0

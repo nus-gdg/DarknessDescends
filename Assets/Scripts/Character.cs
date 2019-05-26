@@ -6,23 +6,44 @@ public class Character : MonoBehaviour
 {
 	public int totalHealth;
 	private int health;
+
 	public CharacterDeathEvent characterDeathEvent;
 	public AllyType characterType;
 
+    public GameObject healthBar;
+    public GameObject healthBarGreen;
+    public float healthBarLength;
+
 	void Awake()
 	{
-		health = totalHealth;
-		if (characterDeathEvent == null) {
-			characterDeathEvent = new CharacterDeathEvent();
-		}
+		setup();
 	}
+
+    public void setup() {
+        healthBar.SetActive(false);
+        health = totalHealth;
+        if (characterDeathEvent == null) {
+            characterDeathEvent = new CharacterDeathEvent();
+        }
+    }
 
 	void takeDamage(int i) {
 		health -= i;
 		if (health <= 0) {
 			characterDeathEvent.Invoke(this);
 			Destroy(gameObject);
-		}
+		} else if(health > totalHealth) {
+            health = totalHealth;
+        }
+
+        healthBar.SetActive(true);
+        Vector3 temp = healthBarGreen.transform.localScale;
+        temp.x = (((float) health)/totalHealth);
+        healthBarGreen.transform.localScale = temp;
+
+        temp = healthBarGreen.transform.localPosition;
+        temp.x = healthBarLength * (1 - (((float) health)/totalHealth)) * -0.5f;
+        healthBarGreen.transform.localPosition = temp;
 	}
 
     void OnCollisionEnter2D(Collision2D collision) {
