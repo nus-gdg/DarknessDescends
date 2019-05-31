@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 591833564}
   - component: {fileID: 591833565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922906581}
   - component: {fileID: 922906580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7559787464993504234}
   - component: {fileID: 7340971573239776407}
   - component: {fileID: 5620611755879583106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Snairtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
