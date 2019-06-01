@@ -346,6 +346,7 @@ MonoBehaviour:
   healthBar: {fileID: 591833563}
   healthBarGreen: {fileID: 922906579}
   healthBarLength: 0
+  invulnerabilityTime: 0.5
 --- !u!114 &7559787464993504235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ Both of these classes also emit sound through the use of an Audio Source. The au
 
 Both the SoundController and MusicController also support muting them, as well as an image to display depending on this status. This mute status is also saved in a player pref to persist across sessions. This is currently not utilized within the game.
 
+Prefabs of both SoundController and MusicController objects (to be placed within the scenes) are available within Scene1.
+
 # SoundController
 
 The SoundController has a list of attributes, each of them referring to a sound that should be played. These are meant to be assigned within the Unity editor. Then, to play these sounds, call `SoundController.theController.playSound(SoundController.theController.sound)`. This would play `sound` immediately from the SoundController's Audio Source.

@@ -358,3 +358,4 @@ MonoBehaviour:
   healthBar: {fileID: 1497020985}
   healthBarGreen: {fileID: 1494655404}
   healthBarLength: 1
+  invulnerabilityTime: 0.5

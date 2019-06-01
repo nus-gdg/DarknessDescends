@@ -14,6 +14,9 @@ public class Character : MonoBehaviour
     public GameObject healthBarGreen;
     public float healthBarLength;
 
+    public float invulnerabilityTime;
+    private float invulnCounter;
+
 	void Awake()
 	{
 		setup();
@@ -24,6 +27,12 @@ public class Character : MonoBehaviour
         health = totalHealth;
         if (characterDeathEvent == null) {
             characterDeathEvent = new CharacterDeathEvent();
+        }
+    }
+
+    public void Update() {
+        if (invulnCounter > 0) {
+            invulnCounter -= Time.deltaTime;
         }
     }
 
@@ -66,10 +75,15 @@ public class Character : MonoBehaviour
     }
 
     private void onCollision(Damager damageComponent) {
-        if (damageComponent.damageSource != characterType) {
+        if (damageComponent.damageSource != characterType && !isInvulnerable()) {
             this.takeDamage(damageComponent.damageAmount);
             this.GetComponent<CharacterAnimator>().Hurt();
             damageComponent.triggerContact();
+            invulnCounter = invulnerabilityTime;
         }
+    }
+
+    public bool isInvulnerable() {
+        return invulnCounter > 0;
     }
 }
