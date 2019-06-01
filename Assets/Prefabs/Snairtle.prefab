@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 7559787464993504234}
   - component: {fileID: 7340971573239776407}
   - component: {fileID: 5620611755879583106}
+  - component: {fileID: 6812236054047520086}
   m_Layer: 8
   m_Name: Snairtle
   m_TagString: Untagged
@@ -343,6 +344,7 @@ MonoBehaviour:
     m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   characterType: 1
+  rewardUponDeath: 100
   healthBar: {fileID: 591833563}
   healthBarGreen: {fileID: 922906579}
   healthBarLength: 0
@@ -400,3 +402,19 @@ MonoBehaviour:
   Weapon: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
   LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
     type: 3}
+--- !u!114 &6812236054047520086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559787464993504226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 5
+  forceDirection: {x: 1, y: 1, z: 0}
+  damageAmount: 5
+  damageSource: 1

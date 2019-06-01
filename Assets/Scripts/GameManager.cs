@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     int score = 0;
+    int highScore;
     int enemiesDefeated = 0;
     float timeSinceGameStart = 0.0f;
     bool playerDead = false;
 
     public Text scoreDisplay;
+    public Text highScoreDisplay;
     public Text timeDisplay;
     public Text endgameDisplay;
 
@@ -19,16 +22,23 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         endgameDisplay.enabled = false;
+        scoreDisplay.text = score.ToString();
+        highScoreDisplay.text = highScore.ToString();
     }
 
     void Update ()
     {
-        float timeElapsedFromPreviousFrame = Time.deltaTime;
-        timeSinceGameStart += timeElapsedFromPreviousFrame;
-        SendSignalToSpawnPoints(timeElapsedFromPreviousFrame);
+        if(!playerDead){
+            float timeElapsedFromPreviousFrame = Time.deltaTime;
+            timeSinceGameStart += timeElapsedFromPreviousFrame;
+            SendSignalToSpawnPoints(timeElapsedFromPreviousFrame);
+            timeDisplay.text = timeSinceGameStart.ToString();
+        }
 
-        scoreDisplay.text = score.ToString();
-        timeDisplay.text = timeSinceGameStart.ToString();
+        if(playerDead && Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void SendSignalToSpawnPoints(float timeElapsedFromPreviousFrame)
@@ -39,13 +49,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void enemyDies(int increaseInScore)
+    public void increaseScore(int increaseInScore)
     {
         score += increaseInScore;
+
+        if(highScore < score)
+        {
+            highScore = score;
+            highScoreDisplay.text = highScore.ToString();
+        }
+
+        scoreDisplay.text = score.ToString();
+    }
+
+    public void enemyDies(int increaseInScore)
+    {
+        increaseScore(increaseInScore);
         enemiesDefeated++;
     }
 
-    void playerCharacterDies()
+    public void playerCharacterDies()
     {
         playerDead = true;
         endgameDisplay.enabled = true;

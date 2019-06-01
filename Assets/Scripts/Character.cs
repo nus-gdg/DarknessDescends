@@ -11,12 +11,16 @@ public class Character : MonoBehaviour
 	public CharacterDeathEvent characterDeathEvent;
 	public AllyType characterType;
 
+    public int rewardUponDeath;
+
     public GameObject healthBar;
     public GameObject healthBarGreen;
     public float healthBarLength;
 
     public float invulnerabilityTime;
     private float invulnCounter;
+
+    private GameManager gameManager;
 
 	void Awake()
 	{
@@ -29,6 +33,8 @@ public class Character : MonoBehaviour
         if (characterDeathEvent == null) {
             characterDeathEvent = new CharacterDeathEvent();
         }
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        characterDeathEvent.AddListener(KillCharacter);
     }
 
     public void Update() {
@@ -51,8 +57,7 @@ public class Character : MonoBehaviour
         }
 
 		if (health <= 0) {
-			characterDeathEvent.Invoke(this);
-			Destroy(gameObject);
+            this.KillAndDestroy();
 		} else if(health > totalHealth) {
             health = totalHealth;
         }
@@ -66,6 +71,12 @@ public class Character : MonoBehaviour
         temp.x = healthBarLength * (1 - (((float) health)/totalHealth)) * -0.5f;
         healthBarGreen.transform.localPosition = temp;
 	}
+
+    public void KillAndDestroy()
+    {
+        characterDeathEvent.Invoke(this);
+        Destroy(gameObject);
+    }
 
     void OnCollisionEnter2D(Collision2D collision) {
         Damager damageComponent = collision.gameObject.GetComponent<Damager>();
@@ -97,5 +108,17 @@ public class Character : MonoBehaviour
 
     public bool isInvulnerable() {
         return invulnCounter > 0;
+    }
+
+    void KillCharacter(Character character)
+    {
+        if(character.gameObject.tag == "Player")
+        {
+            gameManager.playerCharacterDies();
+        }
+        else 
+        {
+            gameManager.enemyDies(rewardUponDeath);
+        }
     }
 }
