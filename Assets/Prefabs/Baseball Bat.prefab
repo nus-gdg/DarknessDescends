@@ -153,5 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 25
+  forceDirection: {x: 30, y: 10, z: 0}
   damageAmount: 300
   damageSource: 0

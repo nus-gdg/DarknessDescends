@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,12 @@ public class Character : MonoBehaviour
         if (invulnCounter > 0) {
             invulnCounter -= Time.deltaTime;
         }
+    }
+
+    void applyKnockBack(Vector3 impulse) {
+        this.GetComponent<Rigidbody2D>().AddForce(impulse, ForceMode2D.Impulse);
+        //this.GetComponent<Rigidbody2D>().velocity = (impulse);
+        this.GetComponent<MovementController>().MovementEnabled = false;
     }
 
 	void takeDamage(int i) {
@@ -76,6 +83,11 @@ public class Character : MonoBehaviour
 
     private void onCollision(Damager damageComponent) {
         if (damageComponent.damageSource != characterType && !isInvulnerable()) {
+            Vector3 deltaX = this.transform.position - damageComponent.transform.position;
+            Vector3 impulse = damageComponent.forceDirection * damageComponent.force;
+            //impulse.x *= (deltaX.x >= 0 ? 1 : -1);
+            impulse.x *= (damageComponent.transform.root.transform.localScale.x);
+            this.applyKnockBack(impulse);
             this.takeDamage(damageComponent.damageAmount);
             this.GetComponent<CharacterAnimator>().Hurt();
             damageComponent.triggerContact();

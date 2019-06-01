@@ -262,7 +262,7 @@ Rigidbody2D:
   m_Mass: 4.72
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f42c74165d15e458f0646a93235e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 600
+  totalHealth: 3000
   characterDeathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709d739aa40194171ba565922c8aa985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementEnabled: 1
 --- !u!114 &7559787464993504234
 MonoBehaviour:
   m_ObjectHideFlags: 0
