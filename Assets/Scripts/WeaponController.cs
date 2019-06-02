@@ -19,7 +19,7 @@ public class WeaponController : MonoBehaviour
             }
             WieldedWeapon = null;
 
-            Weapon drop = loot.WeaponDrop;;
+            Weapon drop = loot.WeaponDrop;
             if (drop is MeleeWeapon)
             {
                 drop.transform.parent = MeleeWeaponTransform;

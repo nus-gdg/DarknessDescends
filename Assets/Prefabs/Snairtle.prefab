@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 922906581}
   m_Father: {fileID: 7559787464993504224}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &591833565
 SpriteRenderer:
@@ -159,6 +159,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4171308759300018897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8233097900760555471}
+  - component: {fileID: 3329129807010063098}
+  - component: {fileID: 129888069546356653}
+  m_Layer: 10
+  m_Name: Melee Damager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8233097900760555471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171308759300018897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7559787464993504224}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3329129807010063098
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171308759300018897}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035, y: -0.075}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.64}
+    newSize: {x: 0.96, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.59, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &129888069546356653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171308759300018897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 20
+  forceDirection: {x: 10, y: 10, z: 0}
+  damageAmount: 10
+  damageSource: 1
 --- !u!1 &7559787464993504226
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,14 +244,13 @@ GameObject:
   - component: {fileID: 7559787464993504224}
   - component: {fileID: 7559787464993504225}
   - component: {fileID: 7559787464993504229}
-  - component: {fileID: 7559787464993504230}
   - component: {fileID: 7559787464993504231}
   - component: {fileID: 7559787464993504233}
   - component: {fileID: 7559787464993504235}
   - component: {fileID: 7559787464993504234}
   - component: {fileID: 7340971573239776407}
   - component: {fileID: 5620611755879583106}
-  - component: {fileID: 6812236054047520086}
+  - component: {fileID: 2574644117779756081}
   m_Layer: 8
   m_Name: Snairtle
   m_TagString: Untagged
@@ -196,6 +269,7 @@ Transform:
   m_LocalPosition: {x: -6.18, y: -2.67, z: -0.044982385}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
+  - {fileID: 8233097900760555471}
   - {fileID: 591833564}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -269,32 +343,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7559787464993504230
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559787464993504226}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.035, y: -0.075}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.64}
-    newSize: {x: 0.96, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.5}
-  m_EdgeRadius: 0
 --- !u!95 &7559787464993504231
 Animator:
   serializedVersion: 3
@@ -402,19 +450,29 @@ MonoBehaviour:
   Weapon: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
   LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
     type: 3}
---- !u!114 &6812236054047520086
-MonoBehaviour:
+--- !u!61 &2574644117779756081
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7559787464993504226}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 5
-  forceDirection: {x: 1, y: 1, z: 0}
-  damageAmount: 5
-  damageSource: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035, y: -0.075}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.64}
+    newSize: {x: 0.96, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.59, y: 0.5}
+  m_EdgeRadius: 0

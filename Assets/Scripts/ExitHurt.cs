@@ -19,7 +19,7 @@ public class ExitHurt : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         animator.GetComponent<MovementController>().MovementEnabled = true;
-        animator.GetComponent<Character>().invulnerabilityTime = 0.0f;
+        animator.GetComponent<Character>().SetVulnerable();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
