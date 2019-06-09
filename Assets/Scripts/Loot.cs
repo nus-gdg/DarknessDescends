@@ -14,7 +14,7 @@ public class Loot : MonoBehaviour
     {
         WeaponDrop = GetComponentInChildren<Weapon>();
         Assert.IsTrue(WeaponDrop != null);
-        StartCoroutine(DespawnInSeconds(5));
+        StartCoroutine(DespawnInSeconds(DespawnTime));
     }
 
     IEnumerator DespawnInSeconds(float seconds)
