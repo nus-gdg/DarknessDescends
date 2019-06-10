@@ -12,7 +12,19 @@ public class Killzone : MonoBehaviour
         }
         else
         {
-            Destroy(other.gameObject);
+            RecursiveDestroy(other.gameObject);
+        }
+    }
+
+    void RecursiveDestroy(GameObject gameObject)
+    {
+        if(gameObject.transform.parent == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            RecursiveDestroy(gameObject.transform.parent.gameObject);
         }
     }
 }

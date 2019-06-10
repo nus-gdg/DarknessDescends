@@ -391,6 +391,11 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  characterInjuredEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CharacterInjuredEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   characterType: 1
   rewardUponDeath: 100
   healthBar: {fileID: 591833563}

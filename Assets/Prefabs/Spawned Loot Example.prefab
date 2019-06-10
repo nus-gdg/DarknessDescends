@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2909541373690930106}
   - component: {fileID: 8814930644301022616}
   m_Layer: 0
-  m_Name: Loot
+  m_Name: Spawned Loot Example
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5328d436bb0f814098dc2fa0ddf9e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DespawnTime: 5
   WeaponDrop: {fileID: 0}
 --- !u!1001 &2006722190
 PrefabInstance:
@@ -139,8 +140,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5434603576996550358, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
 --- !u!4 &2139189133448640496 stripped
 Transform:

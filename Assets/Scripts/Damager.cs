@@ -13,6 +13,19 @@ public class Damager : MonoBehaviour {
     }
 
     public virtual void triggerContact() {
-		Destroy(gameObject);
+		//Destroy(gameObject);
+        RecursiveDestroy(gameObject);
 	}
+
+    void RecursiveDestroy(GameObject gameObject)
+    {
+        if(gameObject.transform.parent == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            RecursiveDestroy(gameObject.transform.parent.gameObject);
+        }
+    }
 }

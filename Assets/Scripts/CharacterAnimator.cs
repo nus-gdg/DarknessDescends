@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Animator))]
 public class CharacterAnimator : MonoBehaviour
 {
-    private bool facingDirection = true; //true means spirte is facing right
-    Animator animator;
+    protected bool facingDirection = true; //true means spirte is facing right
+    protected Animator animator;
 
     void Start()
     {

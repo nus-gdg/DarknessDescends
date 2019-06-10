@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
 	private int health;
 
 	public CharacterDeathEvent characterDeathEvent;
+    public CharacterInjuredEvent characterInjuredEvent;
 	public AllyType characterType;
 
     public int rewardUponDeath;
@@ -30,9 +31,16 @@ public class Character : MonoBehaviour
     public void setup() {
         healthBar.SetActive(false);
         health = totalHealth;
+
         if (characterDeathEvent == null) {
             characterDeathEvent = new CharacterDeathEvent();
         }
+
+        if(characterInjuredEvent == null)
+        {
+            characterInjuredEvent = new CharacterInjuredEvent();
+        }
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         characterDeathEvent.AddListener(KillCharacter);
     }
@@ -51,6 +59,7 @@ public class Character : MonoBehaviour
 
 	void takeDamage(int i) {
 		health -= i;
+        characterInjuredEvent.Invoke(this);
 
         if(i > 0) {
             SoundController.theController.playSound(SoundController.theController.damage);

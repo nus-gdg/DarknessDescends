@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8786319597014064332}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891184211
 GameObject:
@@ -60,7 +60,7 @@ Transform:
   m_Children:
   - {fileID: 1712726979}
   m_Father: {fileID: 8786319597014064332}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &891184213
 SpriteRenderer:
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 5631325470773299247}
   - component: {fileID: 5631325470773299240}
   - component: {fileID: 1432410446}
+  - component: {fileID: 1450811725}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -224,8 +225,8 @@ Transform:
   m_LocalPosition: {x: -5.63, y: -3.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 891184212}
   - {fileID: 589024854}
+  - {fileID: 891184212}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,9 +402,28 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  characterInjuredEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CharacterInjuredEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   characterType: 0
   rewardUponDeath: 0
   healthBar: {fileID: 891184211}
   healthBarGreen: {fileID: 1712726977}
   healthBarLength: 1
   invulnerabilityTime: 0.5
+--- !u!114 &1450811725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786319597014064328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629915b3da5f54443bdcaa6b5de6c09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeWeaponTransform: {fileID: 589024854}
+  WieldedWeapon: {fileID: 0}
