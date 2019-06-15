@@ -411,7 +411,7 @@ MonoBehaviour:
   rewardUponDeath: 0
   healthBar: {fileID: 891184211}
   healthBarGreen: {fileID: 1712726977}
-  healthBarLength: 1
+  healthBarLength: 0
   invulnerabilityTime: 0.5
 --- !u!114 &1450811725
 MonoBehaviour:
