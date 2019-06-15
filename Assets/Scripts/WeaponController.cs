@@ -33,6 +33,8 @@ public class WeaponController : MonoBehaviour
             loot.WeaponDrop = null;
             WieldedWeapon = drop;
             Destroy(loot.gameObject);
+
+            SoundController.theController.playSound(SoundController.theController.pickup);
         }
     }
 

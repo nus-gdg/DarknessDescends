@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   genericMusic:
   - {fileID: 8300000, guid: 3f357b5050f5a5948b1eedb15c7e4f7a, type: 3}
+  - {fileID: 8300000, guid: b867d678987fbb9428d049e4438b102f, type: 3}
   theSource: {fileID: 4951853667027971844}
   muted: 0
   muteSprite: {fileID: 0}

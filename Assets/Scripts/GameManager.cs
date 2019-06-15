@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void playerCharacterDies()
     {
+        SoundController.theController.playSound(SoundController.theController.gameover);
         playerDead = true;
         endgameDisplay.enabled = true;
     }

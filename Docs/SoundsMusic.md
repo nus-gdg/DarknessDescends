@@ -17,3 +17,11 @@ The SoundController has a list of attributes, each of them referring to a sound 
 Similar to the SoundController, the music controller has a list of attributes, each referring to music that should be played. One of the attributes, however, is an array. This is intended to be used as a set of tracks to play, when you call `playRandomMusic()` (which is also called when the game starts), a randomly chosen track from that list is played.
 
 To play Music with the MusicController, call `MusicController.theController.PlayMusic(MusicController.theController.music)`. This will immediately start playing `music` from the MusicController's audio source.
+
+# Credits
+
+Music pieces by Kevin MacLeod:
+
+Easy Lemon, Cipher Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/

@@ -20,6 +20,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void Jump()
     {
+        SoundController.theController.playSound(SoundController.theController.jump);
         animator.SetTrigger("Jump");
     }
 
