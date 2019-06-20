@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2312321825856446359}
   m_Layer: 8
   m_Name: Green
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2312321826050902317}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4896,7 +4896,7 @@ GameObject:
   - component: {fileID: 2312321826475566341}
   m_Layer: 8
   m_Name: Chakupi
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4979,8 +4979,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 3.1615999
+  m_UseAutoMass: 0
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f42c74165d15e458f0646a93235e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 1000
+  totalHealth: 90
   characterDeathEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5136,7 +5136,7 @@ GameObject:
   - component: {fileID: 2312321827082581867}
   m_Layer: 11
   m_Name: PlayerDetector
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5258,7 +5258,7 @@ GameObject:
   - component: {fileID: 2312321827389169702}
   m_Layer: 8
   m_Name: Health bar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5339,7 +5339,7 @@ GameObject:
   - component: {fileID: 2312321827621497021}
   m_Layer: 10
   m_Name: Melee Damager
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

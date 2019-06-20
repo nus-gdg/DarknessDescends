@@ -10,6 +10,10 @@ public class Killzone : MonoBehaviour
         {
             other.gameObject.GetComponent<Character>().KillAndDestroy();
         }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+        }
         else
         {
             Destroy(other.gameObject.transform.root.gameObject);

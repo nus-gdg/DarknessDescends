@@ -57,4 +57,9 @@ public class CharacterAnimator : MonoBehaviour
         transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
         //Flips the sprite along the x-axis
     }
+
+    public bool getFacingDirection()
+    {
+        return facingDirection;
+    }
 }

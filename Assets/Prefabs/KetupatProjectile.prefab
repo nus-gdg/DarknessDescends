@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6545770746538857347}
   - component: {fileID: 6545770746538857344}
   m_Layer: 0
-  m_Name: Ketupat
+  m_Name: KetupatProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 10
   forceDirection: {x: 1, y: 0, z: 0}
-  damageAmount: 20
+  damageAmount: 50
   damageSource: 0
 --- !u!61 &6545770747787157042
 BoxCollider2D:
@@ -181,7 +181,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.285, y: 0}
