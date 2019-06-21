@@ -23,7 +23,7 @@ public class LootDropper : MonoBehaviour
     }
 
     void DropLoot(Character c)
-    {   
+    {
         int roll = UnityEngine.Random.Range(1, 101);
         int accum = 0;
 
@@ -33,7 +33,7 @@ public class LootDropper : MonoBehaviour
             if(roll <= accum)
             {
                 GameObject spawnedLootBase = Instantiate(LootBase, transform.position, Quaternion.identity);
-                GameObject spawnedItem = Instantiate(icp.gameObject, transform.position, Quaternion.identity);
+                GameObject spawnedItem = Instantiate(icp.gameObject, Vector3.zero, Quaternion.identity);
                 spawnedItem.transform.parent = spawnedLootBase.transform;
                 break;
             }

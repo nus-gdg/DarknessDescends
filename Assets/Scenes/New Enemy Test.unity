@@ -416,6 +416,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8814930644301022616, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
+        type: 3}
+      propertyPath: DespawnTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2139189133448640497, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
         type: 3}
       propertyPath: m_IsActive
@@ -1139,6 +1144,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5620611755879583106, guid: 450d49c5c165a5b4ea6b817511451e5a,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[0].percentageChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620611755879583106, guid: 450d49c5c165a5b4ea6b817511451e5a,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 1534228987}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450d49c5c165a5b4ea6b817511451e5a, type: 3}
 --- !u!1001 &1059706015
@@ -1338,7 +1353,7 @@ Transform:
   - {fileID: 458211296}
   - {fileID: 1900040191}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289201364
 GameObject:
@@ -1480,6 +1495,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1534228987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2139189133448640497, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 333230003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1864509134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 589024854, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
@@ -1711,6 +1732,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2312321826475566350, guid: e08bb0d43401c554395297de1e7e210a,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[0].percentageChance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08bb0d43401c554395297de1e7e210a, type: 3}
 --- !u!1001 &8786319598520014584
@@ -1763,7 +1789,7 @@ PrefabInstance:
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
