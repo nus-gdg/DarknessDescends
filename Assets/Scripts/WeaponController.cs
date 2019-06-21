@@ -16,7 +16,7 @@ public class WeaponController : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.Z)) return;
         Loot loot = collision.gameObject.GetComponent<Loot>();
-        if (loot != null && loot.WeaponDrop != null)
+        if (loot != null && loot.isWeapon())
         {
             if (WieldedWeapon != null)
             {
@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
             }
             WieldedWeapon = null;
 
-            Weapon drop = loot.WeaponDrop;
+            Weapon drop = (Weapon)loot.ItemDrop;
             if (drop is MeleeWeapon)
             {
                 drop.transform.parent = MeleeWeaponTransform;
@@ -51,7 +51,7 @@ public class WeaponController : MonoBehaviour
             }
             //Changes
 
-            loot.WeaponDrop = null;
+            loot.ItemDrop = null;
             WieldedWeapon = drop;
             Destroy(loot.gameObject);
 

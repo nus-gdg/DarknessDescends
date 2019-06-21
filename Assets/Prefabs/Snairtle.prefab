@@ -452,9 +452,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3d8d905e6adf74cbd5116965ac8834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9, type: 3}
   LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
     type: 3}
+  possibleLoot:
+  - gameObject: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9,
+      type: 3}
+    percentageChance: 15
+  - gameObject: {fileID: 5726722513950594888, guid: c932a67efacb80b4cb0886c2db668400,
+      type: 3}
+    percentageChance: 20
+  - gameObject: {fileID: 1553698910649348739, guid: 5271ad040942cfd42a88316ed154008b,
+      type: 3}
+    percentageChance: 20
+  - gameObject: {fileID: 9031297210865390737, guid: 88c35634075cc3f49bf71a592e14a1d1,
+      type: 3}
+    percentageChance: 14
+  - gameObject: {fileID: 2383709730508006846, guid: 24ed52dfc35298c42b096bdaddda8906,
+      type: 3}
+    percentageChance: 1
+  arraySize: 5
 --- !u!61 &2574644117779756081
 BoxCollider2D:
   m_ObjectHideFlags: 0

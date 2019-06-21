@@ -81,6 +81,24 @@ public class Character : MonoBehaviour
         healthBarGreen.transform.localPosition = temp;
 	}
 
+    public void Heal(int i)
+    {
+        health += i;
+
+        if(health > totalHealth)
+        {
+            health = totalHealth;
+        }
+
+        Vector3 temp = healthBarGreen.transform.localScale;
+        temp.x = (((float) health)/ totalHealth);
+        healthBarGreen.transform.localScale = temp;
+
+        temp = healthBarGreen.transform.localPosition;
+        temp.x = healthBarLength * (1 - (((float) health)/totalHealth)) * 0.5f;
+        healthBarGreen.transform.localPosition = temp;
+    }
+
     public void KillAndDestroy()
     {
         characterDeathEvent.Invoke(this);
@@ -92,12 +110,24 @@ public class Character : MonoBehaviour
         if (damageComponent != null) {
             onCollision(damageComponent);
         }
+
+        PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
+        if(powerUp != null)
+        {
+            powerUp.InteractWithPowerUp(this);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         Damager damageComponent = collision.gameObject.GetComponent<Damager>();
         if (damageComponent != null) {
             onCollision(damageComponent);
+        }
+
+        PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
+        if(powerUp != null)
+        {
+            powerUp.InteractWithPowerUp(this);
         }
     }
 

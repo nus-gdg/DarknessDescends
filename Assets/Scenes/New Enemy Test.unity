@@ -359,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 3755799352752884314, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2846408765178993804, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
         type: 3}
@@ -997,7 +997,7 @@ PrefabInstance:
     - target: {fileID: 1711905190572599676, guid: 3fb969b30d633764a8a07737b89a9309,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1711905190572599666, guid: 3fb969b30d633764a8a07737b89a9309,
         type: 3}
@@ -1078,6 +1078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Snairtle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559787464993504226, guid: 450d49c5c165a5b4ea6b817511451e5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7559787464993504224, guid: 450d49c5c165a5b4ea6b817511451e5a,
         type: 3}
@@ -1645,6 +1650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chakupi
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312321826475566344, guid: e08bb0d43401c554395297de1e7e210a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2312321826475566346, guid: e08bb0d43401c554395297de1e7e210a,
         type: 3}

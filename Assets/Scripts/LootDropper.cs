@@ -4,10 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Character))]
+[System.Serializable]
 public class LootDropper : MonoBehaviour
 {
-    public GameObject Weapon;
+    //public GameObject Weapon;
     public GameObject LootBase; // Parent gameObject of Weapon so that animation works
+
+    [SerializeField]
+    public List<ItemChancePair> possibleLoot = new List<ItemChancePair>();
+    
+    [SerializeField]
+    public int arraySize; //This needs to be here for the editor to work
+
     void Start()
     {
         Character character = GetComponent<Character>();
@@ -15,10 +23,27 @@ public class LootDropper : MonoBehaviour
     }
 
     void DropLoot(Character c)
-    {
-        // Loot
-        GameObject spawnedLoot = Instantiate(LootBase, transform.position, Quaternion.identity);
-        GameObject spawnedWeapon = Instantiate(Weapon, Vector3.zero, Quaternion.identity);
-        spawnedWeapon.transform.parent = spawnedLoot.transform;
+    {   
+        int roll = UnityEngine.Random.Range(1, 101);
+        int accum = 0;
+
+        foreach(ItemChancePair icp in possibleLoot)
+        {
+            accum += icp.percentageChance;
+            if(roll <= accum)
+            {
+                GameObject spawnedLootBase = Instantiate(LootBase, transform.position, Quaternion.identity);
+                GameObject spawnedItem = Instantiate(icp.gameObject, transform.position, Quaternion.identity);
+                spawnedItem.transform.parent = spawnedLootBase.transform;
+                break;
+            }
+        }
     }
+}
+
+[System.Serializable]
+public class ItemChancePair
+{
+    public GameObject gameObject;
+    public int percentageChance;
 }
