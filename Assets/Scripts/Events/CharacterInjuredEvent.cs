@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class CharacterInjuredEvent : UnityEvent<Character>
+public class CharacterInjuredEvent : UnityEvent<Character, int>
 {
-
 }

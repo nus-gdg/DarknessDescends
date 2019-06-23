@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
         }
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
         characterDeathEvent.AddListener(KillCharacter);
     }
 
@@ -59,7 +60,7 @@ public class Character : MonoBehaviour
 
 	void takeDamage(int i) {
 		health -= i;
-        characterInjuredEvent.Invoke(this);
+        characterInjuredEvent.Invoke(this, i);
 
         if(i > 0) {
             SoundController.theController.playSound(SoundController.theController.damage);
@@ -159,7 +160,7 @@ public class Character : MonoBehaviour
         {
             gameManager.playerCharacterDies();
         }
-        else 
+        else
         {
             gameManager.enemyDies(rewardUponDeath);
         }

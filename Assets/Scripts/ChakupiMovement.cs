@@ -20,7 +20,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
     enum ChakupiState
     {
         Moving, ChargingTransition, Charging, Fire, BetweenStates
-        
+
     };
 
     ChakupiState chakupiState;
@@ -55,7 +55,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
         {
             case ChakupiState.Moving:
                 characterAnimator.Move();
-                if(facingDirection) 
+                if(facingDirection)
                 {
                     movementController.MoveRight(movementSpeed);
                 }
@@ -164,7 +164,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
         }
     }
 
-    void GetHit(Character character)
+    void GetHit(Character character, int i)
     {
         chakupiState = ChakupiState.Moving;
         chargingParticleSystem.SetActive(false);

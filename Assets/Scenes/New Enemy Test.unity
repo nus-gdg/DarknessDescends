@@ -1072,6 +1072,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb969b30d633764a8a07737b89a9309, type: 3}
+--- !u!1 &1034534552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034534554}
+  - component: {fileID: 1034534553}
+  m_Layer: 0
+  m_Name: Damage Text Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1034534553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034534552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985475a94dfd4d84ea5ea687621f01f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageText: {fileID: 7716300000660853848, guid: cf6597e96179aae4c979dc4e1bbd828b,
+    type: 3}
+  Offset: {x: 0, y: 2, z: 0}
+--- !u!4 &1034534554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034534552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1057498264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1501,12 +1547,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 333230003}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1864509134 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 589024854, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
-    type: 3}
-  m_PrefabInstance: {fileID: 8786319598520014584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1897303872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.02
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
@@ -1806,9 +1846,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1450811725, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
-      propertyPath: RangedWeaponTransform
-      value: 
-      objectReference: {fileID: 1864509134}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
