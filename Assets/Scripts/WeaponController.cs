@@ -12,10 +12,59 @@ public class WeaponController : MonoBehaviour
     //Changes
 
     public Weapon WieldedWeapon;
-    private void OnTriggerStay2D(Collider2D collision)
+    private HashSet<GameObject> overlappingItems = new HashSet<GameObject>();
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!Input.GetKey(KeyCode.Z)) return;
-        Loot loot = collision.gameObject.GetComponent<Loot>();
+        if (other.gameObject == null) return;
+        if (other.GetComponent<Loot>() != null && !overlappingItems.Contains(other.gameObject))
+        {
+            overlappingItems.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject == null) return;
+        if (overlappingItems.Contains(other.gameObject))
+        {
+            overlappingItems.Remove(other.gameObject);
+        }
+    }
+
+    // Obtains the loot that is about to expire the soonest using the worst possible
+    // algoritm: linear search
+    private GameObject QueryOldestItem()
+    {
+        if (overlappingItems.Count == 0)
+        {
+            return null;
+        }
+        GameObject[] gameObjects = new GameObject[overlappingItems.Count];
+        overlappingItems.CopyTo(gameObjects);
+        float lowest = Mathf.Infinity;
+        int index = -1;
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            if (gameObjects[i] == null)
+            {
+                overlappingItems.Remove(gameObjects[i]);
+                continue;
+            }
+            float timeRemaining = gameObjects[i].GetComponent<Loot>().currentDespawnTime;
+            if (timeRemaining < lowest)
+            {
+                lowest = timeRemaining;
+                index = i;
+            }
+        }
+        if (index == -1) return null;
+        return gameObjects[index];
+    }
+
+    private void Pickup(GameObject item)
+    {
+        Loot loot = item.GetComponent<Loot>();
         if (loot != null && loot.isWeapon())
         {
             if (WieldedWeapon != null)
@@ -55,11 +104,21 @@ public class WeaponController : MonoBehaviour
             WieldedWeapon = drop;
             Destroy(loot.gameObject);
 
+            overlappingItems.Remove(loot.gameObject);
             SoundController.theController.playSound(SoundController.theController.pickup);
         }
     }
 
-    void Update() {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            GameObject selectedItem = QueryOldestItem();
+            if (selectedItem)
+            {
+                Pickup(selectedItem);
+            }
+        }
         if (WieldedWeapon == null) return;
         if (Input.GetKey(KeyCode.E)) {
             WieldedWeapon.TryToAttack();

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Text highScoreDisplay;
     public Text timeDisplay;
     public Text endgameDisplay;
+    public GameObject pauseMenu;
 
     public List <GameObject> spawnerList;
 
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
         {
             DeleteSavedData();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
         }
     }
 
@@ -134,5 +140,33 @@ public class GameManager : MonoBehaviour
     {
         File.Delete(Application.persistentDataPath + "/save.savedData");
         Debug.Log("Save data deleted.");
+    }
+
+    public void Pause()
+    {
+        if (Time.timeScale == 1f)
+        {
+            Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
+        }
+        else if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
+        }
+    }
+
+    public void ToggleSound()
+    {
+        Text muteButtonText = pauseMenu.transform.Find("Mute Button/Text").GetComponent<Text>();
+        if (AudioListener.volume == 0f)
+        {
+            AudioListener.volume = 1f;
+            muteButtonText.text = "Mute";
+        } else
+        {
+            AudioListener.volume = 0f;
+            muteButtonText.text = "Unmute";
+        }
     }
 }
