@@ -42,9 +42,9 @@ public class Loot : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        currentDespawnTime -= Time.deltaTime;
+        currentDespawnTime -= Time.fixedDeltaTime;
         if (currentDespawnTime <= 0f)
         {
             Destroy(gameObject);
