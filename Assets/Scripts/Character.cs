@@ -53,6 +53,10 @@ public class Character : MonoBehaviour
     public void Update() {
         if (invulnCounter > 0) {
             invulnCounter -= Time.deltaTime;
+        } else if (invulnCounter < 0) {
+            invulnCounter = 0;
+            Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
     }
 

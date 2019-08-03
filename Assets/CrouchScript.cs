@@ -33,6 +33,10 @@ public class CrouchScript : MonoBehaviour
             {
                 ShieldState = !ShieldState;
                 animator.SetBool("Crouch", ShieldState);
+                if (ShieldState == true)
+                {
+                    this.GetComponent<MovementController>().MovementEnabled = false;
+                }
                 if (ShieldState == false)
                 {
                     ShieldCD = 1;
