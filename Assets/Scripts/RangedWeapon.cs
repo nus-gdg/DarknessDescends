@@ -23,6 +23,7 @@ public class RangedWeapon : Weapon
     {
         animator.SetBool("Attack", true);
         bool facingDirection = characterAnimator.getFacingDirection();
+        SoundController.theController.playSound(SoundController.theController.fire);
 
         GameObject spawnedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
         Rigidbody2D rb = spawnedProjectile.GetComponent<Rigidbody2D>();
