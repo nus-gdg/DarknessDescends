@@ -17,7 +17,7 @@ public class WeaponController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == null) return;
-        if (other.GetComponent<Loot>() != null && !overlappingItems.Contains(other.gameObject))
+        if (other.GetComponent<Loot>() != null)
         {
             overlappingItems.Add(other.gameObject);
         }
