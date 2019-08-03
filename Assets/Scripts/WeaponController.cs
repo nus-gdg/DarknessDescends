@@ -6,52 +6,31 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     public Transform MeleeWeaponTransform;
-
-    //Changes
     public Transform RangedWeaponTransform;
-    //Changes
-
     public Weapon WieldedWeapon;
-    private HashSet<GameObject> overlappingItems = new HashSet<GameObject>();
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject == null) return;
-        if (other.GetComponent<Loot>() != null)
-        {
-            overlappingItems.Add(other.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject == null) return;
-        if (overlappingItems.Contains(other.gameObject))
-        {
-            overlappingItems.Remove(other.gameObject);
-        }
-    }
-
+    private Collider2D playerCollider;
+    
     // Obtains the loot that is about to expire the soonest using the worst possible
     // algoritm: linear search
     private GameObject QueryOldestItem()
     {
-        if (overlappingItems.Count == 0)
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        Physics2D.OverlapCollider(playerCollider, filter.NoFilter(),  results);
+        if (results[0] == false)
         {
             return null;
         }
-        GameObject[] gameObjects = new GameObject[overlappingItems.Count];
-        overlappingItems.CopyTo(gameObjects);
         float lowest = Mathf.Infinity;
         int index = -1;
-        for (int i = 0; i < gameObjects.Length; i++)
+        for (int i = 0; i < results.Count; i++)
         {
-            if (gameObjects[i] == null)
+            if (results[i].gameObject == null || results[i].GetComponent<Loot>() == null)
             {
-                overlappingItems.Remove(gameObjects[i]);
                 continue;
             }
-            float timeRemaining = gameObjects[i].GetComponent<Loot>().currentDespawnTime;
+            float timeRemaining = results[i].GetComponent<Loot>().currentDespawnTime;
             if (timeRemaining < lowest)
             {
                 lowest = timeRemaining;
@@ -59,7 +38,7 @@ public class WeaponController : MonoBehaviour
             }
         }
         if (index == -1) return null;
-        return gameObjects[index];
+        return results[index].gameObject;
     }
 
     private void Pickup(GameObject item)
@@ -104,9 +83,13 @@ public class WeaponController : MonoBehaviour
             WieldedWeapon = drop;
             Destroy(loot.gameObject);
 
-            overlappingItems.Remove(loot.gameObject);
             SoundController.theController.playSound(SoundController.theController.pickup);
         }
+    }
+    
+    private void Start()
+    {
+        playerCollider = GetComponent<Collider2D>();
     }
 
     void Update()
