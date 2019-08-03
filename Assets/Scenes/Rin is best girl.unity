@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 17817784}
   - component: {fileID: 17817783}
   - component: {fileID: 17817782}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 78561408}
   - component: {fileID: 78561407}
   - component: {fileID: 78561406}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -822,10 +822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 589024854, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,6 +875,10 @@ PrefabInstance:
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 589024854, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 891184212, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d, type: 3}
@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 866436191}
   - component: {fileID: 866436190}
   - component: {fileID: 866436189}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2274,7 +2274,7 @@ GameObject:
   - component: {fileID: 1581101845}
   - component: {fileID: 1581101844}
   - component: {fileID: 1581101843}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2903,7 +2903,7 @@ GameObject:
   - component: {fileID: 2062214133}
   - component: {fileID: 2062214132}
   - component: {fileID: 2062214131}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3033,7 +3033,7 @@ GameObject:
   - component: {fileID: 2070293663}
   - component: {fileID: 2070293662}
   - component: {fileID: 2070293661}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}

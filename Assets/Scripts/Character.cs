@@ -25,9 +25,9 @@ public class Character : MonoBehaviour
     private GameManager gameManager;
     protected Animator animator;
 
-    void Awake()
-	{
-		setup();
+    void Awake() {
+        animator = GetComponent<Animator>();
+        setup();
 	}
 
     public void setup() {
@@ -48,7 +48,6 @@ public class Character : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
-        animator = GetComponent<Animator>();
     }
 
     public void Update() {
