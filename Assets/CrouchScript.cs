@@ -28,16 +28,17 @@ public class CrouchScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
-                ShieldState = true;
-                animator.SetBool("Crouch", ShieldState);
-            }
-
-            if (Input.GetKeyUp(KeyCode.X))
-            {
-                ShieldState = false;
+                ShieldState = !ShieldState;
                 animator.SetBool("Crouch", ShieldState);
                 ShieldCD = ShieldCDMem;
             }
+
+            //if (Input.GetKeyUp(KeyCode.X))
+            //{
+            //    ShieldState = false;
+            //    animator.SetBool("Crouch", ShieldState);
+            //    ShieldCD = ShieldCDMem;
+            //}
         }
 
 
