@@ -15,8 +15,9 @@ public class Character : MonoBehaviour
     public int rewardUponDeath;
 
     public GameObject healthBar;
-    public GameObject healthBarGreen;
+    public GameObject healthBarGreen; 
     public float healthBarLength;
+    
 
     public float invulnerabilityTime;
     private float invulnCounter;

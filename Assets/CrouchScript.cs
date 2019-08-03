@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class CrouchScript : MonoBehaviour
 {
     public float ShieldVal;
-    private float ShieldMem;
+    public float ShieldMem;
     private bool ShieldState = false;
     public float ShieldCD;
     private float ShieldCDMem;
     protected Animator animator;
     public Text Timer;
+    public GameObject shieldBar;
+    public GameObject shieldBarGreen;
+    public float shieldBarLength;
 
     private void Start()
     {
@@ -30,7 +33,11 @@ public class CrouchScript : MonoBehaviour
             {
                 ShieldState = !ShieldState;
                 animator.SetBool("Crouch", ShieldState);
-                ShieldCD = ShieldCDMem;
+                if (ShieldState == false)
+                {
+                    ShieldCD = 1;
+                }
+                //ShieldCD = ShieldCDMem;
             }
 
             //if (Input.GetKeyUp(KeyCode.X))
@@ -57,6 +64,7 @@ public class CrouchScript : MonoBehaviour
         if (ShieldVal >= ShieldMem)
         {
             ShieldVal = ShieldMem;
+            ShieldCD = 0;
         }
 
         if (ShieldVal <= 0)
@@ -64,10 +72,18 @@ public class CrouchScript : MonoBehaviour
             ShieldVal = 0;
             ShieldState = false;
             animator.SetBool("Crouch", false);
-            ShieldCD = ShieldCDMem;
+            ShieldCD = 1;
         }
 
         Timer.text = ShieldVal.ToString();
-        ShieldCD -= Time.deltaTime;
+
+        Vector3 temp = shieldBarGreen.transform.localScale;
+        temp.x = (ShieldVal / ShieldMem);
+        shieldBarGreen.transform.localScale = temp;
+
+        temp = shieldBarGreen.transform.localPosition;
+        temp.x = shieldBarLength * (1 - (ShieldVal / ShieldMem)) * -0.5f;
+        shieldBarGreen.transform.localPosition = temp;
+        
     }
 }
