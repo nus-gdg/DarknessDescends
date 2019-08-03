@@ -28,17 +28,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetAxis("Vertical") > 0 && isGrounded)
+        if (Input.GetAxisRaw("Vertical") > 0 && isGrounded)
         {
             isJumping = true;
         }
 
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
             isMoving = 1;
         }
 
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             isMoving = -1;
         }
