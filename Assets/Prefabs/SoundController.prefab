@@ -50,6 +50,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: 2cd9cc4c6d88e3b4ba4a16d16ec25e1d, type: 3}
   pickup: {fileID: 8300000, guid: d175e74c995c94c4bbe3241a0851d5d5, type: 3}
   bolt: {fileID: 8300000, guid: 7b73436c8c4191549906310328cab179, type: 3}
+  shield: {fileID: 8300000, guid: a2ecd65c1bf067a41aecc3b3bbf4acc6, type: 3}
   theSource: {fileID: 3377728376792793674}
   muted: 0
   muteSprite: {fileID: 0}

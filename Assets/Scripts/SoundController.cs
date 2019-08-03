@@ -13,6 +13,7 @@ public class SoundController : MonoBehaviour {
 	public AudioClip jump;
 	public AudioClip pickup;
 	public AudioClip bolt;
+	public AudioClip shield;
 
 	public AudioSource theSource;
 
@@ -39,6 +40,12 @@ public class SoundController : MonoBehaviour {
 		if(!muted) {
 			theSource.clip = theSound;
 			theSource.Play();
+		}
+	}
+
+	public void playUninterruptedSound(AudioClip theSound) {
+		if(!muted) {
+			theSource.PlayOneShot(theSound, 1);
 		}
 	}
 

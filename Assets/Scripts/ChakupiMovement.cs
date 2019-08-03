@@ -129,6 +129,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
     {
         chakupiState = ChakupiState.BetweenStates;
         yield return new WaitForSeconds(0.2f);
+        SoundController.theController.playUninterruptedSound(SoundController.theController.shield);
         if(chakupiState == ChakupiState.BetweenStates)
         {
             chakupiState = ChakupiState.Charging;
