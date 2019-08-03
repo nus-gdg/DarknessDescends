@@ -416,16 +416,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8814930644301022616, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
-        type: 3}
-      propertyPath: DespawnTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2139189133448640497, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5434603576132268125, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -445,6 +435,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814930644301022616, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
+        type: 3}
+      propertyPath: DespawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139189133448640497, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1099f19e2c8ecd41b4e2e7263cf65b7, type: 3}
@@ -719,6 +719,7 @@ MonoBehaviour:
   highScoreDisplay: {fileID: 526147986}
   timeDisplay: {fileID: 273106374}
   endgameDisplay: {fileID: 1897303874}
+  pauseMenu: {fileID: 0}
   spawnerList:
   - {fileID: 480134756}
 --- !u!4 &632416351

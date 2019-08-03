@@ -12,6 +12,7 @@ public class SoundController : MonoBehaviour {
 	public AudioClip gameover;
 	public AudioClip jump;
 	public AudioClip pickup;
+	public AudioClip bolt;
 
 	public AudioSource theSource;
 

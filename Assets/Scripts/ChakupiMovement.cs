@@ -174,6 +174,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
     {
         Vector3 projectilePosition = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         Rigidbody2D rb = Instantiate(chakupiThunder, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+        SoundController.theController.playSound(SoundController.theController.bolt);
 
         if(facingDirection)
         {

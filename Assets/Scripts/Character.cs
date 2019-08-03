@@ -41,7 +41,6 @@ public class Character : MonoBehaviour
         {
             characterInjuredEvent = new CharacterInjuredEvent();
         }
-        characterDeathEvent.AddListener(KillCharacter);
     }
 
     void Start()
@@ -122,6 +121,7 @@ public class Character : MonoBehaviour
     public void KillAndDestroy()
     {
         characterDeathEvent.Invoke(this);
+        KillCharacter();
         Destroy(gameObject);
     }
 
@@ -176,9 +176,9 @@ public class Character : MonoBehaviour
         return invulnCounter > 0;
     }
 
-    void KillCharacter(Character character)
+    void KillCharacter()
     {
-        if(character.gameObject.tag == "Player")
+        if(gameObject.tag == "Player")
         {
             gameManager.playerCharacterDies();
         }
