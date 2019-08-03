@@ -40,10 +40,13 @@ public class Character : MonoBehaviour
         {
             characterInjuredEvent = new CharacterInjuredEvent();
         }
+        characterDeathEvent.AddListener(KillCharacter);
+    }
 
+    void Start()
+    {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
-        characterDeathEvent.AddListener(KillCharacter);
     }
 
     public void Update() {
