@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour {
         int hits = 0;
         foreach (Vector2 displace in rays) {
             RaycastHit2D[] hitArray = new RaycastHit2D[3];
-            GetComponent<Collider2D>().Raycast(new Vector2(0f, -1f), hitArray, 1.3f, LayerMask.NameToLayer("Player"));
+            GetComponent<Collider2D>().Raycast(new Vector2(0f, -1f), hitArray, 1.3f, 1 << LayerMask.NameToLayer("Ground"));
             if (hitArray[0].collider != null && hitArray[0].collider.tag == "Ground") {
                 hits++;
             }

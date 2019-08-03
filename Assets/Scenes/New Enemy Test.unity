@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 458211296}
   - component: {fileID: 458211298}
   - component: {fileID: 458211297}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftEdgeDemarcator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,6 +1105,8 @@ MonoBehaviour:
   DamageText: {fileID: 7716300000660853848, guid: cf6597e96179aae4c979dc4e1bbd828b,
     type: 3}
   Offset: {x: 0, y: 2, z: 0}
+  allyColor: {r: 0, g: 0, b: 1, a: 1}
+  enemyColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1034534554
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,7 +1202,14 @@ PrefabInstance:
         type: 3}
       propertyPath: possibleLoot.Array.data[0].gameObject
       value: 
-      objectReference: {fileID: 1534228987}
+      objectReference: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9,
+        type: 3}
+    - target: {fileID: 5620611755879583106, guid: 450d49c5c165a5b4ea6b817511451e5a,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450d49c5c165a5b4ea6b817511451e5a, type: 3}
 --- !u!1001 &1059706015
@@ -1284,7 +1293,7 @@ GameObject:
   - component: {fileID: 1250805045}
   - component: {fileID: 1250805044}
   - component: {fileID: 1250805043}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1542,12 +1551,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1534228987 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2139189133448640497, guid: e1099f19e2c8ecd41b4e2e7263cf65b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 333230003}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1897303872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,7 +1645,7 @@ GameObject:
   - component: {fileID: 1900040191}
   - component: {fileID: 1900040193}
   - component: {fileID: 1900040192}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightEdgeDemarcator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,12 +1798,12 @@ PrefabInstance:
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.45
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.63
+      value: -2.24
       objectReference: {fileID: 0}
     - target: {fileID: 8786319597014064332, guid: a7d4e7f12cfdc594e9fbdc29d66bd50d,
         type: 3}
