@@ -200,13 +200,13 @@ GameObject:
   - component: {fileID: 8786319597014064332}
   - component: {fileID: 8786319597014064331}
   - component: {fileID: 8786319597014064330}
-  - component: {fileID: 8786319597014064329}
   - component: {fileID: 8786319597014064333}
   - component: {fileID: 8786319597014064334}
   - component: {fileID: 5631325470773299247}
   - component: {fileID: 5631325470773299240}
   - component: {fileID: 1432410446}
   - component: {fileID: 1450811725}
+  - component: {fileID: 4800784258343705072}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8786319597014064328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.63, y: -3.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 589024854}
@@ -266,7 +266,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -3298996111989829498, guid: f703ec210b12f324fa37963e400ae140,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -295,37 +295,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.5
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e19bb4992b5b01a48b845bada6c65155, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8786319597014064329
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8786319597014064328}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.04130912, y: 0.01178503}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5298822, y: 2.84}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.421236, y: 2.7940435}
-  m_EdgeRadius: 0
 --- !u!95 &8786319597014064333
 Animator:
   serializedVersion: 3
@@ -428,3 +402,19 @@ MonoBehaviour:
   MeleeWeaponTransform: {fileID: 589024854}
   RangedWeaponTransform: {fileID: 589024854}
   WieldedWeapon: {fileID: 0}
+--- !u!70 &4800784258343705072
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786319597014064328}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e19bb4992b5b01a48b845bada6c65155, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 1.1, y: 2.5}
+  m_Direction: 0
