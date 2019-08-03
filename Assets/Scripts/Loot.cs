@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 public class Loot : MonoBehaviour
 {
     public float DespawnTime = 5;
+    public float currentDespawnTime { get; private set; }
 
     /*
     [HideInInspector]
@@ -29,7 +30,7 @@ public class Loot : MonoBehaviour
     {
         ItemDrop = GetComponentInChildren<Item>();
         Assert.IsTrue(ItemDrop != null);
-        StartCoroutine(DespawnInSeconds(DespawnTime));
+        currentDespawnTime = DespawnTime;
 
         if(ItemDrop is Weapon)
         {
@@ -41,10 +42,13 @@ public class Loot : MonoBehaviour
         }
     }
 
-    IEnumerator DespawnInSeconds(float seconds)
+    void FixedUpdate()
     {
-        yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        currentDespawnTime -= Time.fixedDeltaTime;
+        if (currentDespawnTime <= 0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

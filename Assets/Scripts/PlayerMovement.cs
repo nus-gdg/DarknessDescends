@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             movementController.Jump(jumpForce);
             charAnimator.Jump();
             charAnimator.Move(false);
+            charAnimator.Ground(false);
             isGrounded = false;
             isJumping = false;
         }
@@ -69,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 charAnimator.Move();
             }
-            isMoving = 0;
         }
 
         else if (isMoving > 0)
@@ -80,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 charAnimator.Move();
             }
-            isMoving = 0;
         }
 
         else
