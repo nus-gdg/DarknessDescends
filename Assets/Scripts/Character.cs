@@ -22,8 +22,9 @@ public class Character : MonoBehaviour
     private float invulnCounter;
 
     private GameManager gameManager;
+    protected Animator animator;
 
-	void Awake()
+    void Awake()
 	{
 		setup();
 	}
@@ -47,6 +48,7 @@ public class Character : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
+        animator = GetComponent<Animator>();
     }
 
     public void Update() {
@@ -61,29 +63,43 @@ public class Character : MonoBehaviour
         this.GetComponent<MovementController>().MovementEnabled = false;
     }
 
-	void takeDamage(int i) {
-		health -= i;
-        characterInjuredEvent.Invoke(this, i);
+    void takeDamage(int i)
+    {
+        if (animator.GetBool("Crouch") != true)
+        {
+            health -= i;
+            characterInjuredEvent.Invoke(this, i);
 
-        if(i > 0) {
-            SoundController.theController.playSound(SoundController.theController.damage);
+            if (i > 0)
+            {
+                SoundController.theController.playSound(SoundController.theController.damage);
+            }
+
+            if (health <= 0)
+            {
+                this.KillAndDestroy();
+            }
+            else if (health > totalHealth)
+            {
+                health = totalHealth;
+            }
+
+            healthBar.SetActive(true);
+            Vector3 temp = healthBarGreen.transform.localScale;
+            temp.x = (((float)health) / totalHealth);
+            healthBarGreen.transform.localScale = temp;
+
+            temp = healthBarGreen.transform.localPosition;
+            temp.x = healthBarLength * (1 - (((float)health) / totalHealth)) * -0.5f;
+            healthBarGreen.transform.localPosition = temp;
         }
 
-		if (health <= 0) {
-            this.KillAndDestroy();
-		} else if(health > totalHealth) {
-            health = totalHealth;
+        else
+        {
+            CrouchScript crouch = GetComponent<CrouchScript>();
+            crouch.ShieldVal -= i;
         }
-
-        healthBar.SetActive(true);
-        Vector3 temp = healthBarGreen.transform.localScale;
-        temp.x = (((float) health)/totalHealth);
-        healthBarGreen.transform.localScale = temp;
-
-        temp = healthBarGreen.transform.localPosition;
-        temp.x = healthBarLength * (1 - (((float) health)/totalHealth)) * -0.5f;
-        healthBarGreen.transform.localPosition = temp;
-	}
+    }
 
     public void Heal(int i)
     {
@@ -147,7 +163,10 @@ public class Character : MonoBehaviour
             //impulse.x *= (damageComponent.transform.root.transform.localScale.x);
             this.applyKnockBack(impulse);
             this.takeDamage(damageComponent.damageAmount);
-            this.GetComponent<CharacterAnimator>().Hurt();
+            if (animator.GetBool("Crouch") != true)
+            {
+                this.GetComponent<CharacterAnimator>().Hurt();
+            }
             damageComponent.triggerContact();
             invulnCounter = invulnerabilityTime;
         }
