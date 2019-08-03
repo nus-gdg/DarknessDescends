@@ -24,7 +24,7 @@ public class DamageTextManager : MonoBehaviour
     {
         if (DamageText != null)
         {
-            Vector3 randOffset = new Vector3(Random.Range(0, 1), Random.Range(0, 1), 0);
+            Vector3 randOffset = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0);
             GameObject damageTextObj = Instantiate(
                 DamageText,
                 character.gameObject.transform.position + Offset + randOffset,
