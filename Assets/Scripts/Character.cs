@@ -149,6 +149,7 @@ public class Character : MonoBehaviour
         if(powerUp != null)
         {
             powerUp.InteractWithPowerUp(this);
+            SoundController.theController.playSound(SoundController.theController.pickup);
         }
     }
 
