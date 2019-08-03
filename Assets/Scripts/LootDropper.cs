@@ -12,7 +12,7 @@ public class LootDropper : MonoBehaviour
 
     [SerializeField]
     public List<ItemChancePair> possibleLoot = new List<ItemChancePair>();
-    
+
     [SerializeField]
     public int arraySize; //This needs to be here for the editor to work
 
@@ -35,6 +35,7 @@ public class LootDropper : MonoBehaviour
                 GameObject spawnedLootBase = Instantiate(LootBase, transform.position, Quaternion.identity);
                 GameObject spawnedItem = Instantiate(icp.gameObject, Vector3.zero, Quaternion.identity);
                 spawnedItem.transform.parent = spawnedLootBase.transform;
+                spawnedItem.transform.position = spawnedLootBase.transform.position;
                 break;
             }
         }
