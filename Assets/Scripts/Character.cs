@@ -22,7 +22,6 @@ public class Character : MonoBehaviour
     public float invulnerabilityTime;
     private float invulnCounter;
 
-    private GameManager gameManager;
     protected Animator animator;
     private MovementController controller;
 
@@ -35,10 +34,12 @@ public class Character : MonoBehaviour
         controller = GetComponent<MovementController>();
     }
 
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
+    void Start() {
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (DamageTextManager.Instance) {
+            characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
+        }
+        characterDeathEvent.AddListener(gameManager.OnCharacterDeath);
     }
 
     public void Update() {
@@ -109,13 +110,10 @@ public class Character : MonoBehaviour
         healthBarGreen.transform.localPosition = temp;
     }
 
-    public void KillAndDestroy()
-    {
+    public void KillAndDestroy() {
         characterDeathEvent.Invoke(this);
-        KillCharacter();
         Destroy(gameObject);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision) {
         Damager damageComponent = collision.gameObject.GetComponent<Damager>();
@@ -155,17 +153,5 @@ public class Character : MonoBehaviour
 
     public bool isInvulnerable() {
         return invulnCounter > 0;
-    }
-
-    void KillCharacter()
-    {
-        if(gameObject.tag == "Player")
-        {
-            gameManager.playerCharacterDies();
-        }
-        else
-        {
-            gameManager.enemyDies(rewardUponDeath);
-        }
     }
 }
