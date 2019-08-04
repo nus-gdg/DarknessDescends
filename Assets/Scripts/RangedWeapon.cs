@@ -19,6 +19,12 @@ public class RangedWeapon : Weapon
         weaponReady = true;
     }
 
+    public override void AttachToTransform(Transform handTransform, bool isFacingRight)
+    {
+        base.AttachToTransform(handTransform, isFacingRight);
+        characterAnimator = transform.root.GetComponent<CharacterAnimator>();
+    }
+
     private void Attack()
     {
         animator.SetBool("Attack", true);

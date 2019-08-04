@@ -5,12 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class WeaponController : MonoBehaviour
 {
-    public Transform MeleeWeaponTransform;
-    public Transform RangedWeaponTransform;
+    public Transform HandTransform;
     public Weapon WieldedWeapon;
 
     private Collider2D playerCollider;
-    
+
     // Obtains the loot that is about to expire the soonest using the worst possible
     // algoritm: linear search
     private GameObject QueryOldestItem()
@@ -51,42 +50,15 @@ public class WeaponController : MonoBehaviour
                 Destroy(WieldedWeapon.gameObject);
             }
             WieldedWeapon = null;
-
             Weapon drop = (Weapon)loot.ItemDrop;
-            if (drop is MeleeWeapon)
-            {
-                drop.transform.parent = MeleeWeaponTransform;
-                drop.transform.position = MeleeWeaponTransform.position;
-                Vector3 weaponScale = drop.transform.localScale;
-                drop.transform.localScale =
-                    new Vector3(weaponScale.x * Mathf.Sign(transform.localScale.x),
-                                weaponScale.y,
-                                weaponScale.z);
-            }
-
-            //Changes
-            if(drop is RangedWeapon)
-            {
-                drop.transform.parent = RangedWeaponTransform;
-                drop.transform.position = MeleeWeaponTransform.position;
-                Vector3 weaponScale = drop.transform.localScale;
-                drop.transform.localScale =
-                    new Vector3(weaponScale.x * Mathf.Sign(transform.localScale.x),
-                                weaponScale.y,
-                                weaponScale.z);
-
-                ((RangedWeapon)drop).characterAnimator = GetComponent<CharacterAnimator>();
-            }
-            //Changes
-
+            drop.AttachToTransform(HandTransform, transform.localScale.x >= 0);
             loot.ItemDrop = null;
             WieldedWeapon = drop;
             Destroy(loot.gameObject);
-
             SoundController.theController.playSound(SoundController.theController.pickup);
         }
     }
-    
+
     private void Start()
     {
         playerCollider = GetComponent<Collider2D>();
