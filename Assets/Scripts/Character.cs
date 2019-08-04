@@ -45,9 +45,7 @@ public class Character : MonoBehaviour
         if (invulnCounter > 0) {
             invulnCounter -= Time.deltaTime;
         } else if (invulnCounter < 0) {
-            invulnCounter = 0; // remove invulnerability, note if conditions
-            controller.MovementEnabled = true;
-            controller.Stationary(); // reset x velocity after invulnerability ends
+            SetVulnerable(); // remove invulnerability
         }
     }
 
@@ -135,6 +133,8 @@ public class Character : MonoBehaviour
 
     public void SetVulnerable() {
         invulnCounter = 0.0f;
+        controller.MovementEnabled = true;
+        controller.Stationary(); // reset x velocity after invulnerability ends
     }
 
     private void onCollision(Damager damageComponent) {
