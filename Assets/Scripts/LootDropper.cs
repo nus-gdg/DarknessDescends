@@ -22,8 +22,9 @@ public class LootDropper : MonoBehaviour
         character.characterDeathEvent.AddListener(DropLoot);
     }
 
-    void DropLoot(Character c)
+    void DropLoot(Character c, CharacterDeathReason reason)
     {
+        if (reason == CharacterDeathReason.KILLED_BY_KILL_ZONE) return; // dont spawn loot if killed by kill zone
         int roll = UnityEngine.Random.Range(1, 101);
         int accum = 0;
 

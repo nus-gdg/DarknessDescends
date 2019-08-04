@@ -69,7 +69,7 @@ public class Character : MonoBehaviour
 
             if (health <= 0)
             {
-                this.KillAndDestroy();
+                this.KillAndDestroy(CharacterDeathReason.KILLED_BY_DAMAGE);
             }
             else if (health > totalHealth)
             {
@@ -110,8 +110,8 @@ public class Character : MonoBehaviour
         healthBarGreen.transform.localPosition = temp;
     }
 
-    public void KillAndDestroy() {
-        characterDeathEvent.Invoke(this);
+    public void KillAndDestroy(CharacterDeathReason reason) {
+        characterDeathEvent.Invoke(this, reason);
         Destroy(gameObject);
     }
 

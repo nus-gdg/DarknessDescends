@@ -6,17 +6,18 @@ public class Killzone : MonoBehaviour
 {
     void OnTriggerEnter2D (Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if((other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy") &&
+            other.gameObject.GetComponent<Character>()) // to refactor (currently enemy weapons are tagged as "enemy")
         {
-            other.gameObject.GetComponent<Character>().KillAndDestroy();
+            other.gameObject.GetComponent<Character>().KillAndDestroy(CharacterDeathReason.KILLED_BY_KILL_ZONE);
         }
-        else if (other.gameObject.tag == "Enemy")
+        else if (other.gameObject.GetComponent<Damager>())
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Damager>().triggerContact(); // despawns damagers if they are projectiles
         }
         else
         {
-            Destroy(other.gameObject.transform.root.gameObject);
+            Destroy(gameObject.transform.root.gameObject);
         }
     }
 }
