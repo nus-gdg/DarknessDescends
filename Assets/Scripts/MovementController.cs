@@ -36,4 +36,9 @@ public class MovementController : MonoBehaviour {
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
     }
+
+    public void KnockBack(Vector3 impulse)
+    {
+        rb.AddForce(impulse, ForceMode2D.Impulse);
+    }
 }

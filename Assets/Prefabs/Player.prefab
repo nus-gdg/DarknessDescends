@@ -399,8 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629915b3da5f54443bdcaa6b5de6c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeleeWeaponTransform: {fileID: 589024854}
-  RangedWeaponTransform: {fileID: 589024854}
+  HandTransform: {fileID: 589024854}
   WieldedWeapon: {fileID: 0}
 --- !u!70 &4800784258343705072
 CapsuleCollider2D:

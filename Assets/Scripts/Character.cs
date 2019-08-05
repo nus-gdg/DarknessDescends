@@ -15,55 +15,44 @@ public class Character : MonoBehaviour
     public int rewardUponDeath;
 
     public GameObject healthBar;
-    public GameObject healthBarGreen; 
+    public GameObject healthBarGreen;
     public float healthBarLength;
-    
+
 
     public float invulnerabilityTime;
     private float invulnCounter;
 
-    private GameManager gameManager;
     protected Animator animator;
+    private MovementController controller;
 
     void Awake() {
-        animator = GetComponent<Animator>();
-        setup();
-	}
-
-    public void setup() {
         healthBar.SetActive(false);
         health = totalHealth;
-
-        if (characterDeathEvent == null) {
-            characterDeathEvent = new CharacterDeathEvent();
-        }
-
-        if(characterInjuredEvent == null)
-        {
-            characterInjuredEvent = new CharacterInjuredEvent();
-        }
+        animator = GetComponent<Animator>();
+        characterDeathEvent = new CharacterDeathEvent();
+        characterInjuredEvent = new CharacterInjuredEvent();
+        controller = GetComponent<MovementController>();
     }
 
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
+    void Start() {
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (DamageTextManager.Instance) {
+            characterInjuredEvent.AddListener(DamageTextManager.Instance.OnCharacterInjured);
+        }
+        characterDeathEvent.AddListener(gameManager.OnCharacterDeath);
     }
 
     public void Update() {
         if (invulnCounter > 0) {
             invulnCounter -= Time.deltaTime;
         } else if (invulnCounter < 0) {
-            invulnCounter = 0;
-            Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+            SetVulnerable(); // remove invulnerability
         }
     }
 
     void applyKnockBack(Vector3 impulse) {
-        this.GetComponent<Rigidbody2D>().AddForce(impulse, ForceMode2D.Impulse);
-        //this.GetComponent<Rigidbody2D>().velocity = (impulse);
-        this.GetComponent<MovementController>().MovementEnabled = false;
+        controller.KnockBack(impulse);
+        controller.MovementEnabled = false;
     }
 
     void takeDamage(int i)
@@ -80,7 +69,7 @@ public class Character : MonoBehaviour
 
             if (health <= 0)
             {
-                this.KillAndDestroy();
+                this.KillAndDestroy(CharacterDeathReason.KILLED_BY_DAMAGE);
             }
             else if (health > totalHealth)
             {
@@ -96,7 +85,6 @@ public class Character : MonoBehaviour
             temp.x = healthBarLength * (1 - (((float)health) / totalHealth)) * -0.5f;
             healthBarGreen.transform.localPosition = temp;
         }
-
         else
         {
             CrouchScript crouch = GetComponent<CrouchScript>();
@@ -122,24 +110,9 @@ public class Character : MonoBehaviour
         healthBarGreen.transform.localPosition = temp;
     }
 
-    public void KillAndDestroy()
-    {
-        characterDeathEvent.Invoke(this);
-        KillCharacter();
+    public void KillAndDestroy(CharacterDeathReason reason) {
+        characterDeathEvent.Invoke(this, reason);
         Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        Damager damageComponent = collision.gameObject.GetComponent<Damager>();
-        if (damageComponent != null) {
-            onCollision(damageComponent);
-        }
-
-        PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
-        if(powerUp != null)
-        {
-            powerUp.InteractWithPowerUp(this);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -158,14 +131,15 @@ public class Character : MonoBehaviour
 
     public void SetVulnerable() {
         invulnCounter = 0.0f;
+        controller.MovementEnabled = true;
+        controller.Stationary(); // reset x velocity after invulnerability ends
     }
 
     private void onCollision(Damager damageComponent) {
         if (damageComponent.damageSource != characterType && !isInvulnerable()) {
-            Vector3 deltaX = this.transform.position - damageComponent.transform.position;
+            float deltaX = this.transform.position.x - damageComponent.transform.position.x;
             Vector3 impulse = damageComponent.forceDirection * damageComponent.force;
-            impulse.x *= (deltaX.x >= 0 ? 1 : -1);
-            //impulse.x *= (damageComponent.transform.root.transform.localScale.x);
+            impulse.x *= (deltaX >= 0 ? 1 : -1);
             this.applyKnockBack(impulse);
             this.takeDamage(damageComponent.damageAmount);
             if (animator.GetBool("Crouch") != true)
@@ -179,17 +153,5 @@ public class Character : MonoBehaviour
 
     public bool isInvulnerable() {
         return invulnCounter > 0;
-    }
-
-    void KillCharacter()
-    {
-        if(gameObject.tag == "Player")
-        {
-            gameManager.playerCharacterDies();
-        }
-        else
-        {
-            gameManager.enemyDies(rewardUponDeath);
-        }
     }
 }

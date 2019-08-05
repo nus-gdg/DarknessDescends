@@ -86,11 +86,24 @@ public class GameManager : MonoBehaviour
         scoreDisplay.text = score.ToString();
     }
 
+    public void OnCharacterDeath(Character character, CharacterDeathReason reason)
+    {
+        if(character.tag == "Player")
+        {
+            playerCharacterDies();
+        }
+        else if (reason == CharacterDeathReason.KILLED_BY_DAMAGE) // record deaths if killed by player
+        {
+            enemyDies(character.rewardUponDeath);
+        }
+    }
+
     public void enemyDies(int increaseInScore)
     {
         increaseScore(increaseInScore);
         enemiesDefeated++;
     }
+
 
     public void playerCharacterDies()
     {
