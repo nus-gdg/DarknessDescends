@@ -5,8 +5,13 @@ Contains:
 - Tilesets and backgrounds!
 - LIT AF 8-BIT PARTICLE EFFECTS (SEE BELOW)
 
-![Witch Girl doing Witch Girl things](./Assets/Graphics/crappy_particle_fx.gif)
-*Girl not included*
+<p align="center">
+  <img src="./Assets/Graphics/crappy_particle_fx.gif">
+</p>
+
+<p align="center">
+  <i>Girl not included</i>
+</p>
 
 Camera controller by Cinemachine, by Unity Technologies
 Font used: Chau Philomene One, from Google Fonts
