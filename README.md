@@ -1,4 +1,4 @@
-# FIRE AF GRAPHICS FOR Darkness Decends
+# FIRE AF GRAPHICS FOR Darkness Descends
 
 Contains: 
 - Sample concept for damage text!
