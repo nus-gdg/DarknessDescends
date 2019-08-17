@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DamageText : MonoBehaviour
 {
@@ -16,11 +17,11 @@ public class DamageText : MonoBehaviour
         Destroy(gameObject, LifeTime);
     }
 
-    public void SetText(string text, Color color)
+    public void SetText(string text, VertexGradient colours)
     {
-        TextMesh tm = GetComponent<TextMesh>();
+        TextMeshPro tm = GetComponent<TextMeshPro>();
         tm.text = text;
-        tm.color = color;
+        tm.colorGradient = colours;
     }
 
     void OnDestroy()
