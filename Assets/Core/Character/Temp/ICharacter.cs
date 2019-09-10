@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 namespace GDG
 {
-public interface ICharacter
+public interface ICharacter : IDamagee
 {
-    ICharacterStats GetCharacterStats();
+    ICharacterStats GetCharacterStats(); // not needed for now
     void PickUp(IItem item);
-    void PickUpAsWeapon(IItem item);
-    void KnockBack(Vector3 impulse);
+    void EquipAsWeapon(IItem item);
 }
 }

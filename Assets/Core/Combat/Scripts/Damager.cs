@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damager : MonoBehaviour {
+namespace GDG
+{
+[RequireComponent(typeof(Collider2D))]
+public class Damager : MonoBehaviour
+{
     public float force;
     public Vector3 forceDirection;
     public int damageAmount;
-	public AllyType damageSource;
+    public AllyType damageSource;
 
-    private void Start() {
+    private void Start()
+    {
         forceDirection = Vector3.Normalize(forceDirection);
     }
 
-    public virtual void triggerContact() {
-		Destroy(gameObject.transform.root.gameObject);
-	}
+    public virtual void triggerContact()
+    {
+        Destroy(gameObject.transform.root.gameObject);
+    }
+}
 }

@@ -3,7 +3,7 @@
 namespace GDG
 {
 using static GameManager;
-public class GameplayController : MonoBehaviour
+public class GameplayController :  Singleton<GameplayController>
 {
     public GameLogicManager gameLogic;
     public DropManager dropManager;
@@ -12,13 +12,14 @@ public class GameplayController : MonoBehaviour
     float timeSinceGameStart = 0.0f;
     SaveData saveData;
 
-    void OnEnable()
+    void Start()
     {
         EventManager.Instance.AddListener<GameStateChangedEvent>(OnGameStateChanged);
     }
 
-    void OnDisable()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         EventManager.Instance.RemoveListener<GameStateChangedEvent>(OnGameStateChanged);
     }
 
@@ -68,13 +69,13 @@ public class GameplayController : MonoBehaviour
         }
     }
 
-    void OnEnemyDeath(IEnemy enemy)
+    public void OnEnemyDeath(IEnemy enemy)
     {
         gameLogic.OnEnemyDeath(enemy);
         dropManager.DropReward(enemy);
     }
 
-    void OnHeroDeath(IHero hero)
+    public void OnHeroDeath(IHero hero)
     {
         GameOver();
     }

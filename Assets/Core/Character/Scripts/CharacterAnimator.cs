@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GDG;
 
 [RequireComponent(typeof(Animator))]
 public class CharacterAnimator : MonoBehaviour
@@ -20,7 +21,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void Jump()
     {
-        SoundController.theController.playSound(SoundController.theController.jump);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.jump);
         animator.SetTrigger("Jump");
     }
 

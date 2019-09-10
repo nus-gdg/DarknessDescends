@@ -8,5 +8,8 @@ public interface IItem
 {
     void Use();
     void OnPickUp(ICharacter character);
+    void SetParentTransform(Transform t);
+    void SetFaceDirection(bool faceRight);
+    void Destroy();
 }
 }

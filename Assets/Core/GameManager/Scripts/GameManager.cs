@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         }
         else if (reason == CharacterDeathReason.KILLED_BY_DAMAGE) // record deaths if killed by player
         {
-            enemyDies(character.rewardUponDeath);
+            // enemyDies(character.rewardUponDeath);
         }
     }
 

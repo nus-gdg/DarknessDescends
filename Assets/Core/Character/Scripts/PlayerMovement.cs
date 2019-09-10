@@ -68,22 +68,8 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        //Vector2[] rays = { new Vector2(0f, 0f), new Vector2(0.5f, 0f), new Vector2(-0.5f, 0f), new Vector2(0.25f, 0f), new Vector2(-0.25f, 0f) };
-        //int hits = 0;
-        //foreach (Vector2 displace in rays) {
-        //    RaycastHit2D[] hitArray = new RaycastHit2D[3];
-        //    GetComponent<Collider2D>().Raycast(new Vector2(0f, -1f) + displace, hitArray, 1.3f, 1 << LayerMask.NameToLayer("Ground"));
-        //    if (hitArray[0].collider != null && hitArray[0].collider.tag == "Ground") {
-        //        hits++;
-        //    }
-        //}
-        //if (collision.gameObject.tag == "Ground" && hits > rays.Length / 2) {
-        //    if (!isGrounded) {
-        //        charAnimator.Ground();
-        //    }
-        //    isGrounded = true;
-        //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         CheckGrounded();
     }
 
