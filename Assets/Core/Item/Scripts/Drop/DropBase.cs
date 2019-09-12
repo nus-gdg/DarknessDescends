@@ -7,7 +7,8 @@ namespace GDG
     [RequireComponent(typeof(Collider2D))]
     public class DropBase : MonoBehaviour
     {
-        public float DespawnTime = 5;
+        [SerializeField]
+        private float DespawnTime = 5;
         public float currentDespawnTime { get; private set; }
         public IItem itemDrop { private get; set; } // assume we have an Item as a child game object
 

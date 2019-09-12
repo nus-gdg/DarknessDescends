@@ -21,7 +21,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void Jump()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.jump);
+        SoundManager.Instance.PlayJump();
         animator.SetTrigger("Jump");
     }
 

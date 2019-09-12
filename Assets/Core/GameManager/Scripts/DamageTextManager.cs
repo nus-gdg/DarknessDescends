@@ -41,7 +41,7 @@ public class DamageTextManager : MonoBehaviour
                 Quaternion.identity
             );
             DamageText damageText = damageTextObj.GetComponentInChildren<DamageText>();
-            VertexGradient gradient = character.characterType == AllyType.Friendly ?
+            VertexGradient gradient = character.CharacterType == AllyType.Friendly ?
                 new VertexGradient(topAllyColour, topAllyColour, botAllyColour, botAllyColour) :
                 new VertexGradient(topEnemyColour, topEnemyColour, botEnemyColour, botEnemyColour);
             damageText.SetText(damage.ToString(), gradient);

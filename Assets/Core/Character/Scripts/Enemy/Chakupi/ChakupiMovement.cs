@@ -32,7 +32,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
         chakupiState = ChakupiState.Moving;
 
         character = GetComponent<Character>();
-        character.characterInjuredEvent.AddListener(GetHit);
+        character.CharacterInjuredEvent.AddListener(GetHit);
 
         detector.GetComponent<PlayerDetector>().playerDetectedEvent.AddListener(DetectPlayer);
 

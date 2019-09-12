@@ -22,7 +22,7 @@ public class LootDropper : MonoBehaviour
     void Start()
     {
         Character character = GetComponent<Character>();
-        character.characterDeathEvent.AddListener(DropLoot);
+        character.CharacterDeathEvent.AddListener(DropLoot);
     }
 
     void DropLoot(Character c, CharacterDeathReason reason)

@@ -4,74 +4,93 @@ using UnityEngine;
 
 namespace GDG
 {
-// Credit: Jeremy Choo
-public class SoundManager : Manager<SoundManager>
-{
-    public static string playerPrefName = "soundMute";
-
-    public AudioClip damage;
-    public AudioClip fire;
-    public AudioClip gameover;
-    public AudioClip jump;
-    public AudioClip pickup;
-    public AudioClip bolt;
-    public AudioClip shield;
-
-    public AudioSource theSource;
-
-    public bool muted;
-    public Sprite muteSprite;
-    public Sprite nonMutedSprite;
-
-    void Start()
+    // Credit: Jeremy Choo
+    public class SoundManager : Manager<SoundManager>
     {
-        theSource = gameObject.GetComponent<AudioSource>();
-        if(PlayerPrefs.HasKey(playerPrefName))
-        {
-            muted = PlayerPrefs.GetInt(playerPrefName) != 0;
-        } else
-        {
-            muted = false;
-            PlayerPrefs.SetInt(playerPrefName, 0);
-        }
-    }
+        public static string playerPrefName = "soundMute";
+        [SerializeField]
+        private AudioClip damage;
+        [SerializeField]
+        private AudioClip fire;
+        [SerializeField]
+        private AudioClip gameover;
+        [SerializeField]
+        private AudioClip jump;
+        [SerializeField]
+        private AudioClip pickup;
+        [SerializeField]
+        private AudioClip bolt;
+        [SerializeField]
+        private AudioClip shield;
 
-    public void PlaySound(AudioClip theSound)
-    {
-        if(!muted)
-        {
-            theSource.clip = theSound;
-            theSource.Play();
-        }
-    }
+        public void PlayDamage() { PlaySound(damage); }
+        public void PlayFire() { PlaySound(fire); }
+        public void PlayGameOver() { PlaySound(gameover); }
+        public void PlayJump() { PlaySound(jump); }
+        public void PlayPickup() { PlaySound(pickup); }
+        public void PlayBolt() { PlaySound(bolt); }
+        public void PlayShield() { PlaySound(shield); }
 
-    public void playUninterruptedSound(AudioClip theSound)
-    {
-        if(!muted)
-        {
-            theSource.PlayOneShot(theSound, 1);
-        }
-    }
+        [SerializeField]
+        private AudioSource theSource;
 
-    public void toggleMute(GameObject imageToUpdate)
-    {
-        muted = !muted;
-        PlayerPrefs.SetInt(playerPrefName, muted ? 1 : 0);
+        [SerializeField]
+        private bool muted;
+        [SerializeField]
+        private Sprite muteSprite;
+        [SerializeField]
+        private Sprite nonMutedSprite;
 
-        if(imageToUpdate != null)
+        void Start()
         {
-            updateSprite(imageToUpdate);
+            theSource = gameObject.GetComponent<AudioSource>();
+            if (PlayerPrefs.HasKey(playerPrefName))
+            {
+                muted = PlayerPrefs.GetInt(playerPrefName) != 0;
+            }
+            else
+            {
+                muted = false;
+                PlayerPrefs.SetInt(playerPrefName, 0);
+            }
         }
 
-        if(muted)
+        public void PlaySound(AudioClip theSound)
         {
-            theSource.Stop();
+            if (!muted)
+            {
+                theSource.clip = theSound;
+                theSource.Play();
+            }
+        }
+
+        public void PlayUninterruptedSound(AudioClip theSound)
+        {
+            if (!muted)
+            {
+                theSource.PlayOneShot(theSound, 1);
+            }
+        }
+
+        public void ToggleMute(GameObject imageToUpdate)
+        {
+            muted = !muted;
+            PlayerPrefs.SetInt(playerPrefName, muted ? 1 : 0);
+
+            if (imageToUpdate != null)
+            {
+                UpdateSprite(imageToUpdate);
+            }
+
+            if (muted)
+            {
+                theSource.Stop();
+            }
+        }
+
+        private void UpdateSprite(GameObject who)
+        {
+            who.GetComponent<SpriteRenderer>().sprite = muted ? muteSprite : nonMutedSprite;
         }
     }
-
-    public void updateSprite(GameObject who)
-    {
-        who.GetComponent<SpriteRenderer>().sprite = muted ? muteSprite : nonMutedSprite;
-    }
-}
 }

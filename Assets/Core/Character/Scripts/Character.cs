@@ -5,23 +5,34 @@ using UnityEngine;
 using GDG;
 public class Character : MonoBehaviour, ICharacter
 {
-    public AllyType characterType;
-    public CharacterStats characterStats;
-    public CharacterDeathEvent characterDeathEvent;
-    public CharacterInjuredEvent characterInjuredEvent;
 
-    public Transform hand;
+    [SerializeField]
+    private AllyType characterType;
+    [SerializeField]
+    private CharacterStats characterStats;
+    [SerializeField]
+    private CharacterDeathEvent characterDeathEvent;
+    [SerializeField]
+    private CharacterInjuredEvent characterInjuredEvent;
+    [SerializeField]
+    private Transform hand;
 
     public GameObject healthBar;
     public GameObject healthBarGreen;
     public float healthBarLength;
 
-    public float invulnerabilityTime;
+    [SerializeField]
+    private float invulnerabilityTime;
     private float invulnCounter;
 
     private IItem weapon;
     private MovementController controller;
     private CharacterAnimator characterAnimator;
+
+    public AllyType CharacterType { get => characterType;  }
+    public CharacterStats CharacterStats { get => characterStats; }
+    public CharacterDeathEvent CharacterDeathEvent { get => characterDeathEvent; }
+    public CharacterInjuredEvent CharacterInjuredEvent { get => characterInjuredEvent;  }
 
     void Awake()
     {
@@ -49,11 +60,11 @@ public class Character : MonoBehaviour, ICharacter
 
     public void PickUp(IItem item)
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.pickup);
+        SoundManager.Instance.PlayPickup();
         item.OnPickUp(this);
     }
 
-     public IItem GetWeapon()
+    public IItem GetWeapon()
     {
         return weapon;
     }
@@ -92,7 +103,7 @@ public class Character : MonoBehaviour, ICharacter
         {
             invulnCounter = invulnerabilityTime;
             characterStats.Damage(amount);
-            SoundManager.Instance.PlaySound(SoundManager.Instance.damage);
+            SoundManager.Instance.PlayDamage();
             characterAnimator.Hurt();
 
             var currentHealth = characterStats.GetCurrentHealth();
@@ -119,7 +130,7 @@ public class Character : MonoBehaviour, ICharacter
         characterStats.Heal(i);
         var currentHealth = characterStats.GetCurrentHealth();
         var totalHealth = characterStats.GetTotalHealth();
-        if(currentHealth > totalHealth)
+        if (currentHealth > totalHealth)
         {
             currentHealth = totalHealth;
         }
@@ -129,7 +140,7 @@ public class Character : MonoBehaviour, ICharacter
         healthBarGreen.transform.localScale = temp;
 
         temp = healthBarGreen.transform.localPosition;
-        temp.x = healthBarLength * (1 - (( currentHealth)/totalHealth)) * 0.5f;
+        temp.x = healthBarLength * (1 - ((currentHealth) / totalHealth)) * 0.5f;
         healthBarGreen.transform.localPosition = temp;
     }
 

@@ -31,7 +31,7 @@ namespace GDG
                     DropBase drop = go.GetComponent<DropBase>();
                     IItem randomitem = drop.TakeItem();
                     randomitem.OnPickUp(hero);
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.pickup);
+                    SoundManager.Instance.PlayPickup();
 
                     Debug.Log("Item Looted");
                 }

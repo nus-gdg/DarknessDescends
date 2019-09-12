@@ -4,28 +4,28 @@ using UnityEngine;
 
 namespace GDG
 {
-// Credits: sharkcirctuis
-public class DropManager : MonoBehaviour
-{
-    public GameObject DropShell;
-    public void DropReward(IDropper dropper)
+    // Credits: sharkcirctuis
+    public class DropManager : MonoBehaviour
     {
-        Vector3 dropPosition = dropper.GetDropPosition();
-        List<DropChancePair> dropList = dropper.GetDropList();
-
-        int roll = UnityEngine.Random.Range(0, dropper.GetDropChanceRange()+1); // not accurate
-        int accum = 0;
-
-        foreach (DropChancePair dcp in dropList)
+        public GameObject DropShell;
+        public void DropReward(IDropper dropper)
         {
-            accum += dcp.weightage;
-            if(roll <= accum)
+            Vector3 dropPosition = dropper.GetDropPosition();
+            List<DropChancePair> dropList = dropper.GetDropList();
+
+            int roll = UnityEngine.Random.Range(0, dropper.GetDropChanceRange() + 1); // not accurate
+            int accum = 0;
+
+            foreach (DropChancePair dcp in dropList)
             {
+                accum += dcp.weightage;
+                if (roll <= accum)
+                {
                     dropItem(dropPosition, dcp.dropPrefab);
                     break;
+                }
             }
         }
-    }
         private void dropItem(Vector3 position, GameObject dropPrefab)
         {
             GameObject dropBase = Instantiate(DropShell, position, Quaternion.identity);
@@ -48,5 +48,5 @@ public class DropManager : MonoBehaviour
                 drop.itemDrop = item;
             }
         }
-}
+    }
 }

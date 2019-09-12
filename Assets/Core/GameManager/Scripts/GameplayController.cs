@@ -83,7 +83,7 @@ public class GameplayController :  Singleton<GameplayController>
     void GameOver()
     {
         RecordSavedData();
-        SoundManager.Instance.PlaySound(SoundManager.Instance.gameover);
+        SoundManager.Instance.PlayGameOver();
         UIManager.Instance.DisplayEndGame();
         isGameRunning = false;
     }
