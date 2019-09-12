@@ -4,30 +4,47 @@ using UnityEngine;
 
 namespace GDG
 {
-public class Enemy : Character, IEnemy
-{
-    public List<DropChancePair> DropList;
-    public int RewardScore;
-
-    public List<DropChancePair> GetDropList()
+    public class Enemy : Character, IEnemy
     {
-        return DropList;
-    }
+        public List<DropChancePair> DropList;
+        public int dropChanceRange;
+        public int RewardScore;
 
-    public Vector3 GetDropPosition()
-    {
-        return transform.position;
-    }
+        IEnumerator Start()
+        {
+            CalculateDropChanceRange();
+            return null;
+        }
+        private void CalculateDropChanceRange()
+        {
+            foreach(DropChancePair p in DropList)
+            {
+                dropChanceRange += p.weightage;
+            }
+        }
+        public int GetDropChanceRange()
+        {
+            return dropChanceRange;
+        }
+        public List<DropChancePair> GetDropList()
+        {
+            return DropList;
+        }
 
-    public int GetRewardScore()
-    {
-        return RewardScore;
-    }
+        public Vector3 GetDropPosition()
+        {
+            return transform.position;
+        }
 
-    public override void KillAndDestroy(CharacterDeathReason reason)
-    {
-        GameplayController.Instance.OnEnemyDeath(this);
-        Destroy(gameObject);
+        public int GetRewardScore()
+        {
+            return RewardScore;
+        }
+
+        public override void KillAndDestroy(CharacterDeathReason reason)
+        {
+            GameplayController.Instance.OnEnemyDeath(this);
+            Destroy(gameObject);
+        }
     }
-}
 }

@@ -9,6 +9,6 @@ namespace GDG
 public class DropChancePair
 {
     public GameObject dropPrefab;
-    public int percentageChance;
+    public int weightage;
 }
 }
