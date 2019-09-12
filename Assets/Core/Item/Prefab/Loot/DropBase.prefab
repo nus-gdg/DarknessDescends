@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5217990197032680086}
   m_Layer: 0
   m_Name: DropBase
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

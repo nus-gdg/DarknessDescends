@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7074732724105497042}
   m_Layer: 0
   m_Name: Loot Base
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,4 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5328d436bb0f814098dc2fa0ddf9e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponDrop: {fileID: 0}
+  DespawnTime: 5
+  ItemDrop: {fileID: 0}

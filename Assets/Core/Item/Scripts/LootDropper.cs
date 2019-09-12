@@ -11,10 +11,13 @@ public class LootDropper : MonoBehaviour
     public GameObject LootBase; // Parent gameObject of Weapon so that animation works
 
     [SerializeField]
-    public List<ItemChancePair> possibleLoot = new List<ItemChancePair>();
+    private List<ItemChancePair> possibleLoot = new List<ItemChancePair>();
 
     [SerializeField]
-    public int arraySize; //This needs to be here for the editor to work
+    private int arraySize; //This needs to be here for the editor to work
+
+    public List<ItemChancePair> PossibleLoot { get { return possibleLoot; } }
+    public int ArraySize { get { return arraySize; } }
 
     void Start()
     {

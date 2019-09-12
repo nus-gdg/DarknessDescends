@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GDG
 {
-public interface IHero : ICharacter, ILooter
+public interface IHero : ICharacter//, ILooter
 {
 }
 }

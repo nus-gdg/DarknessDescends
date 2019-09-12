@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9031297210865390766}
   m_Layer: 12
   m_Name: Healthpack
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

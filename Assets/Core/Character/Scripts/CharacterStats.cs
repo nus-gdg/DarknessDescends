@@ -7,8 +7,10 @@ namespace GDG
 [CreateAssetMenu(menuName = "GDG/CharacterStats")]
 public class CharacterStats : ScriptableObject, ICharacterStats
 {
+    [SerializeField]
+    private float totalHealth;
+
     private float health;
-    public float totalHealth;
     private float speed;
 
     void OnEnable()

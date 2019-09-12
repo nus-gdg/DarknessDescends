@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+/*
 [CustomEditor(typeof(LootDropper))]
 public class LootDropperEditor : Editor
 {   
@@ -14,10 +14,10 @@ public class LootDropperEditor : Editor
         myLootDropper.LootBase = (GameObject)EditorGUILayout.ObjectField("Loot Base", myLootDropper.LootBase, typeof(GameObject), true);
 
         //Handling the lootList
-        List<ItemChancePair> lootList = myLootDropper.possibleLoot;
+        List<ItemChancePair> lootList = myLootDropper.PossibleLoot;
 
-        myLootDropper.arraySize = EditorGUILayout.IntField("Size", myLootDropper.arraySize);
-        myLootDropper.arraySize = myLootDropper.arraySize < 0 ? 0 : myLootDropper.arraySize;
+        myLootDropper.ArraySize = EditorGUILayout.IntField("Size", myLootDropper.ArraySize);
+        myLootDropper.ArraySize = myLootDropper.ArraySize < 0 ? 0 : myLootDropper.ArraySize;
 
         int originalCapacity = lootList.Capacity;
 
@@ -49,3 +49,4 @@ public class LootDropperEditor : Editor
         }
     }
 }
+*/

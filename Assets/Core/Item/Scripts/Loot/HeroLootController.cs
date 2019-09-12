@@ -4,33 +4,58 @@ using UnityEngine;
 
 namespace GDG
 {
-// Credits: danielnyan
-[RequireComponent(typeof(IHero))]
-public class HeroLootController : MonoBehaviour
-{
-    private IHero hero;
-    private Collider2D looterCollider;
-
-    void Start()
+    // Credits: danielnyan
+    [RequireComponent(typeof(IHero))]
+    public class HeroLootController : MonoBehaviour
     {
-        hero = GetComponent<IHero>();
-        looterCollider = hero.GetLooterCollider();
-    }
+        private IHero hero;
 
-     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
+        private List<GameObject> lootInRange;
+        void Start()
         {
-            var selectedItem = QueryOldestItem();
-
-            if (selectedItem != null)
+            hero = GetComponent<IHero>();
+            lootInRange = new List<GameObject>();
+            var boxCollider = gameObject.AddComponent<BoxCollider2D>();
+            boxCollider.isTrigger = true;
+        }
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                selectedItem.OnPickUp(hero);
-                SoundManager.Instance.PlaySound(SoundManager.Instance.pickup);
+
+                if (lootInRange.Count > 0)
+                {
+                    GameObject go = lootInRange[0];
+                    lootInRange.RemoveAt(0);
+
+                    DropBase drop = go.GetComponent<DropBase>();
+                    IItem randomitem = drop.TakeItem();
+                    randomitem.OnPickUp(hero);
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.pickup);
+
+                    Debug.Log("Item Looted");
+                }
             }
         }
-    }
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "Item")
+            {
+                lootInRange.Add(other.gameObject);
+                Debug.Log("Item in Range");
+            }
+        }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.tag == "Item")
+            {
+                lootInRange.Remove(other.gameObject);
+                Debug.Log("Item out of Range");
+            }
+        }
+
+        /*
     // Obtains the loot that is about to expire the soonest using the worst possible
     // algoritm: linear search
     private IItem QueryOldestItem()
@@ -61,6 +86,6 @@ public class HeroLootController : MonoBehaviour
             }
         }
         return item;
+    }*/
     }
-}
 }
