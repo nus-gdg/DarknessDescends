@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GDG;
+
+namespace GDG
+{
 public class Character : MonoBehaviour, ICharacter
 {
 
@@ -10,8 +12,6 @@ public class Character : MonoBehaviour, ICharacter
     private AllyType characterType;
     [SerializeField]
     private CharacterStats characterStats;
-    [SerializeField]
-    private CharacterDeathEvent characterDeathEvent;
     [SerializeField]
     private CharacterInjuredEvent characterInjuredEvent;
     [SerializeField]
@@ -29,10 +29,9 @@ public class Character : MonoBehaviour, ICharacter
     private MovementController controller;
     private CharacterAnimator characterAnimator;
 
-    public AllyType CharacterType { get => characterType;  }
+    public AllyType CharacterType { get => characterType; }
     public CharacterStats CharacterStats { get => characterStats; }
-    public CharacterDeathEvent CharacterDeathEvent { get => characterDeathEvent; }
-    public CharacterInjuredEvent CharacterInjuredEvent { get => characterInjuredEvent;  }
+    public CharacterInjuredEvent CharacterInjuredEvent { get => characterInjuredEvent; }
 
     void Awake()
     {
@@ -77,7 +76,6 @@ public class Character : MonoBehaviour, ICharacter
         }
         this.weapon = weapon;
         weapon.SetParentTransform(hand);
-        weapon.SetFaceDirection(characterAnimator.getFacingDirection());
     }
 
     public AllyType GetAllyType()
@@ -109,9 +107,16 @@ public class Character : MonoBehaviour, ICharacter
             var currentHealth = characterStats.GetCurrentHealth();
             var totalHealth = characterStats.GetTotalHealth();
 
+            EventManager.Instance.Raise(new CharacterDamagedEvent {
+                Damage = amount,
+                Position = transform.position,
+                CharacterType = GetAllyType(),
+            });
+
             if (currentHealth <= 0)
             {
                 this.KillAndDestroy(CharacterDeathReason.KILLED_BY_DAMAGE);
+                return;
             }
 
             healthBar.SetActive(true);
@@ -149,38 +154,12 @@ public class Character : MonoBehaviour, ICharacter
         Destroy(gameObject);
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision) {
-    //     Damager damageComponent = collision.gameObject.GetComponent<Damager>();
-    //     if (damageComponent != null) {
-    //         onCollision(damageComponent);
-    //     }
-
-    //     PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
-    //     if(powerUp != null)
-    //     {
-    //         powerUp.InteractWithPowerUp(this);
-    //         SoundManager.Instance.PlaySound(SoundManager.Instance.pickup);
-    //     }
-    // }
-
     public void SetVulnerable()
     {
         invulnCounter = 0.0f;
         controller.MovementEnabled = true;
         controller.Stationary(); // reset x velocity after invulnerability ends
     }
-
-    // private void onCollision(Damager damageComponent) {
-    //     if (damageComponent.damageSource != characterType && !isInvulnerable()) {
-    //         float deltaX = this.transform.position.x - damageComponent.transform.position.x;
-    //         Vector3 impulse = damageComponent.forceDirection * damageComponent.force;
-    //         impulse.x *= (deltaX >= 0 ? 1 : -1);
-    //         this.applyKnockBack(impulse);
-    //         this.Damage(damageComponent.damageAmount);
-    //         damageComponent.triggerContact();
-    //         invulnCounter = invulnerabilityTime;
-    //     }
-    // }
 
     void applyKnockBack(Vector3 impulse)
     {
@@ -192,4 +171,17 @@ public class Character : MonoBehaviour, ICharacter
     {
         return invulnCounter > 0;
     }
+
+    public bool GetFacingDirection()
+    {
+        return characterAnimator.getFacingDirection();
+    }
+}
+
+public class CharacterDamagedEvent : GameEvent
+{
+    public float Damage;
+    public Vector3 Position;
+    public AllyType CharacterType;
+}
 }

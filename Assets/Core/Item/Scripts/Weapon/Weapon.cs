@@ -6,19 +6,19 @@ namespace GDG
 {
 public abstract class Weapon : MonoBehaviour, IItem
 {
-    public void OnPickUp(ICharacter c)
+    public virtual void OnPickUp(ICharacter c)
     {
         c.EquipAsWeapon(this);
+        setFaceDirection(c.GetFacingDirection());
     }
 
     public void SetParentTransform(Transform t)
     {
         transform.parent = t;
         transform.position = t.position;
-
     }
 
-    public void SetFaceDirection(bool facingRight)
+    private void setFaceDirection(bool facingRight)
     {
         Vector3 weaponScale = transform.localScale;
         float xSign = facingRight ? 1 : -1; // To Change

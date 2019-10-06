@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using GDG;
 
 [System.Serializable]
 public class CharacterDeathEvent : UnityEvent<Character, CharacterDeathReason>

@@ -31,6 +31,8 @@ namespace GDG
         public void PlayBolt() { PlaySound(bolt); }
         public void PlayShield() { PlaySound(shield); }
 
+        public void PlayShieldUninterrupted() { PlayUninterruptedSound(shield); }
+
         [SerializeField]
         private AudioSource theSource;
 

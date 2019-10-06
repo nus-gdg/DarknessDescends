@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5726722513950594890}
   - component: {fileID: 5726722513950594891}
-  - component: {fileID: 5726722513950594901}
-  - component: {fileID: 5726722513950594900}
+  - component: {fileID: 6446532188945222246}
   m_Layer: 0
   m_Name: KetupatWeapon
   m_TagString: Item
@@ -81,26 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5726722513950594901
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726722513950594888}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c14b47de7df5e7f43ba1de4de28b6263, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5726722513950594900
+--- !u!114 &6446532188945222246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,11 +89,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5726722513950594888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b124eceb17f9740aa8ced986789da6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bb2a98c86385b145b56d9948183f0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6545770746538857348, guid: eb1befa91363dd743be9a3c3b54dc964,
+  Projectile: {fileID: 6545770746538857348, guid: eb1befa91363dd743be9a3c3b54dc964,
     type: 3}
-  characterAnimator: {fileID: 0}
-  projectileSpeed: 5
-  cooldown: 0.5
+  ProjectileSpeed: 20
+  Cooldown: 1

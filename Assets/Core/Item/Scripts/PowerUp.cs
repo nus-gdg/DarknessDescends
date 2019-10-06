@@ -1,4 +1,5 @@
 using UnityEngine;
+using GDG;
 
 public abstract class PowerUp : Item
 {

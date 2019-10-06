@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GDG;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(MovementController), typeof(ChakupiCharacterAnimator))]
 public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcator
@@ -129,7 +130,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
     {
         chakupiState = ChakupiState.BetweenStates;
         yield return new WaitForSeconds(0.2f);
-        SoundController.theController.playUninterruptedSound(SoundController.theController.shield);
+        SoundManager.Instance.PlayShieldUninterrupted();
         if(chakupiState == ChakupiState.BetweenStates)
         {
             chakupiState = ChakupiState.Charging;
@@ -175,7 +176,7 @@ public class ChakupiMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcato
     {
         Vector3 projectilePosition = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         Rigidbody2D rb = Instantiate(chakupiThunder, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
-        SoundController.theController.playSound(SoundController.theController.bolt);
+        SoundManager.Instance.PlayBolt();
 
         if(facingDirection)
         {

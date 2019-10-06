@@ -4888,11 +4888,10 @@ GameObject:
   - component: {fileID: 2312321826475566347}
   - component: {fileID: 2312321826475566348}
   - component: {fileID: 2312321826475566349}
-  - component: {fileID: 2312321826475566351}
+  - component: {fileID: 7237097450904220915}
   - component: {fileID: 2312321826475566338}
   - component: {fileID: 2312321826475566339}
   - component: {fileID: 2312321826475566340}
-  - component: {fileID: 2312321826475566350}
   - component: {fileID: 2312321826475566341}
   m_Layer: 8
   m_Name: Chakupi
@@ -5015,7 +5014,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38, y: 0.52}
   m_EdgeRadius: 0
---- !u!114 &2312321826475566351
+--- !u!114 &7237097450904220915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5024,26 +5023,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2312321826475566344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f42c74165d15e458f0646a93235e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 54699a2db2c6bda4b8571524ad97416f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 90
-  characterDeathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  characterType: 1
+  characterStats: {fileID: 11400000, guid: 254084cb19a88f041a9c4963d3fc5625, type: 2}
   characterInjuredEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: CharacterInjuredEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  characterType: 1
-  rewardUponDeath: 100
+  hand: {fileID: 0}
   healthBar: {fileID: 2312321827389169700}
   healthBarGreen: {fileID: 2312321825856446356}
   healthBarLength: 0
-  invulnerabilityTime: 0.5
+  invulnerabilityTime: 0
+  DropList: []
+  dropChanceRange: 0
+  RewardScore: 0
 --- !u!114 &2312321826475566338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5088,37 +5085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0d8cafbc30f0e42afe71cea6b6ec8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2312321826475566350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312321826475566344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3d8d905e6adf74cbd5116965ac8834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
-    type: 3}
-  possibleLoot:
-  - gameObject: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9,
-      type: 3}
-    percentageChance: 30
-  - gameObject: {fileID: 5726722513950594888, guid: c932a67efacb80b4cb0886c2db668400,
-      type: 3}
-    percentageChance: 5
-  - gameObject: {fileID: 1553698910649348739, guid: 5271ad040942cfd42a88316ed154008b,
-      type: 3}
-    percentageChance: 20
-  - gameObject: {fileID: 9031297210865390737, guid: 88c35634075cc3f49bf71a592e14a1d1,
-      type: 3}
-    percentageChance: 14
-  - gameObject: {fileID: 2383709730508006846, guid: 24ed52dfc35298c42b096bdaddda8906,
-      type: 3}
-    percentageChance: 1
-  arraySize: 5
 --- !u!114 &2312321826475566341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5352,7 +5318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2312321827621497019}
   - component: {fileID: 2312321827621497018}
-  - component: {fileID: 2312321827621497021}
+  - component: {fileID: 3253393374891530071}
   m_Layer: 10
   m_Name: Melee Damager
   m_TagString: Enemy
@@ -5400,7 +5366,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38, y: 0.52}
   m_EdgeRadius: 0
---- !u!114 &2312321827621497021
+--- !u!114 &3253393374891530071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5409,10 +5375,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2312321827621497016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
+  m_Script: {fileID: 11500000, guid: acbc56c7cfc81ca4f9c69e7210e5fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
-  forceDirection: {x: 10, y: 10, z: 0}
+  force: 10
+  forceDirection: {x: 1, y: 1, z: 0}
   damageAmount: 5
   damageSource: 1

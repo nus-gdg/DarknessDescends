@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GDG;
 
+namespace GDG
+{
 public class Killzone : MonoBehaviour
 {
     void OnTriggerEnter2D (Collider2D other)
@@ -12,13 +13,10 @@ public class Killzone : MonoBehaviour
         {
             other.gameObject.GetComponent<Character>().KillAndDestroy(CharacterDeathReason.KILLED_BY_KILL_ZONE);
         }
-        else if (other.gameObject.GetComponent<Damager>())
-        {
-            other.gameObject.GetComponent<Damager>().triggerContact(); // despawns damagers if they are projectiles
-        }
         else
         {
-            Destroy(gameObject.transform.root.gameObject);
+            Destroy(other.gameObject.transform.root.gameObject);
         }
     }
+}
 }

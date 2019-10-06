@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5872012935141836029}
   - component: {fileID: 3850976334143763186}
-  - component: {fileID: 7768561695927888958}
+  - component: {fileID: 7185570430338068793}
   m_Layer: 10
   m_Name: Damager
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29, y: 0.175}
   m_EdgeRadius: 0
---- !u!114 &7768561695927888958
+--- !u!114 &7185570430338068793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,12 +67,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 331682100197676617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbc56c7cfc81ca4f9c69e7210e5fea5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5903138465697224296c2ee92c3cef29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
-  forceDirection: {x: 1, y: 0, z: 0}
-  damageAmount: 40
+  forceDirection: {x: 0, y: 0, z: 0}
+  damageAmount: 5
   damageSource: 1
 --- !u!1 &851780390807827188
 GameObject:

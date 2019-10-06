@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8233097900760555471}
   - component: {fileID: 3329129807010063098}
-  - component: {fileID: 129888069546356653}
+  - component: {fileID: 5390286734975834568}
   m_Layer: 10
   m_Name: Melee Damager
   m_TagString: Enemy
@@ -217,7 +217,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.59, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &129888069546356653
+--- !u!114 &5390286734975834568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,12 +226,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4171308759300018897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
+  m_Script: {fileID: 11500000, guid: acbc56c7cfc81ca4f9c69e7210e5fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   force: 20
-  forceDirection: {x: 10, y: 10, z: 0}
-  damageAmount: 10
+  forceDirection: {x: 1, y: 1, z: 0}
+  damageAmount: 5
   damageSource: 1
 --- !u!1 &7559787464993504226
 GameObject:
@@ -245,12 +245,11 @@ GameObject:
   - component: {fileID: 7559787464993504225}
   - component: {fileID: 7559787464993504229}
   - component: {fileID: 7559787464993504231}
-  - component: {fileID: 7559787464993504233}
+  - component: {fileID: 2574644117779756081}
+  - component: {fileID: 6705446537941770001}
   - component: {fileID: 7559787464993504235}
   - component: {fileID: 7559787464993504234}
   - component: {fileID: 7340971573239776407}
-  - component: {fileID: 5620611755879583106}
-  - component: {fileID: 2574644117779756081}
   m_Layer: 8
   m_Name: Snairtle
   m_TagString: Enemy
@@ -362,7 +361,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7559787464993504233
+--- !u!61 &2574644117779756081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559787464993504226}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035, y: -0.075}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.64}
+    newSize: {x: 0.96, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.59, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &6705446537941770001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,37 +396,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7559787464993504226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f42c74165d15e458f0646a93235e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 54699a2db2c6bda4b8571524ad97416f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 150
-  characterDeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 18cf393a6cf58b64496cf32818a1dac3, type: 3}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-    m_TypeName: CharacterDeathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  characterType: 1
+  characterStats: {fileID: 11400000, guid: ada317d3e372234479b7729831805da1, type: 2}
   characterInjuredEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: CharacterInjuredEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  characterType: 1
-  rewardUponDeath: 100
+  hand: {fileID: 0}
   healthBar: {fileID: 591833563}
   healthBarGreen: {fileID: 922906579}
   healthBarLength: 0
-  invulnerabilityTime: 0.5
+  invulnerabilityTime: 0
+  DropList: []
+  dropChanceRange: 0
+  RewardScore: 0
 --- !u!114 &7559787464993504235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,60 +452,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
---- !u!114 &5620611755879583106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559787464993504226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3d8d905e6adf74cbd5116965ac8834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LootBase: {fileID: 3199197060475454992, guid: 2ca41e4bf37e6044f8d0aed459271bf0,
-    type: 3}
-  possibleLoot:
-  - gameObject: {fileID: 2139189132550263167, guid: 1802b2afd1bfc294bb3bf117023a53b9,
-      type: 3}
-    percentageChance: 15
-  - gameObject: {fileID: 5726722513950594888, guid: c932a67efacb80b4cb0886c2db668400,
-      type: 3}
-    percentageChance: 20
-  - gameObject: {fileID: 1553698910649348739, guid: 5271ad040942cfd42a88316ed154008b,
-      type: 3}
-    percentageChance: 20
-  - gameObject: {fileID: 9031297210865390737, guid: 88c35634075cc3f49bf71a592e14a1d1,
-      type: 3}
-    percentageChance: 14
-  - gameObject: {fileID: 2383709730508006846, guid: 24ed52dfc35298c42b096bdaddda8906,
-      type: 3}
-    percentageChance: 1
-  arraySize: 5
---- !u!61 &2574644117779756081
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559787464993504226}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.035, y: -0.075}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.64}
-    newSize: {x: 0.96, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.5}
-  m_EdgeRadius: 0
