@@ -413,7 +413,7 @@ MonoBehaviour:
   invulnerabilityTime: 0
   DropList: []
   dropChanceRange: 0
-  RewardScore: 0
+  RewardScore: 2
 --- !u!114 &7559787464993504235
 MonoBehaviour:
   m_ObjectHideFlags: 0

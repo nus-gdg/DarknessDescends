@@ -53,7 +53,6 @@ public class GameplayController :  Singleton<GameplayController>
         timeSinceGameStart = 0.0f;
         isGameRunning = true;
         EventManager.Instance.Raise(new GameStartEvent {});
-
     }
 
     void TogglePauseGame(bool toggle)
@@ -93,12 +92,13 @@ public class GameplayController :  Singleton<GameplayController>
 
     void RecordSavedData()
     {
-        saveData = SaveData.RecordHighscoreIntoSave(gameLogic.highScore);
+        saveData = SaveData.RecordHighscoreIntoSave(gameLogic.GetHighScore());
     }
 
     void UpdateStateBasedOnSaveData(SaveData incomingSaveData)
     {
-        gameLogic.highScore = incomingSaveData.highScore;
+        Debug.Log(incomingSaveData.highScore);
+        gameLogic.SetHighScore(incomingSaveData.highScore);
     }
 }
 
