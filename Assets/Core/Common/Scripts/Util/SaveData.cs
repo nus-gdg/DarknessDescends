@@ -23,10 +23,10 @@ public class SaveData
 
     public static SaveData LoadSaveData()
     {
-        if(File.Exists(Application.persistentDataPath + "/save.savedData"))
+        if (File.Exists(Application.persistentDataPath + "/save.savedData"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/save.saveData", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/save.savedData", FileMode.Open);
             SaveData returnValue = (SaveData) bf.Deserialize(file);
             file.Close();
             Debug.Log("Save data found.");

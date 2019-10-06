@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using GDG;
+
 [RequireComponent(typeof(Rigidbody2D), typeof(MovementController), typeof(CharacterAnimator))]
 public class PatrollingEnemyMovement : MonoBehaviour, InteractsWithPlatformEdgeDemarcator
 {
@@ -32,7 +34,7 @@ public class PatrollingEnemyMovement : MonoBehaviour, InteractsWithPlatformEdgeD
     private void FixedUpdate()
     {
         characterAnimator.Move();
-        if(facingDirection) 
+        if(facingDirection)
         {
             movementController.MoveRight(movementSpeed);
         }

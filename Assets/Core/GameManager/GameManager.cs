@@ -17,6 +17,7 @@ public class GameManager : Manager<GameManager>
 
     void Start()
     {
+        UpdateState(GameState.Running);
     }
 
     void Update()

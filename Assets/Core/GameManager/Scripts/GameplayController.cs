@@ -15,8 +15,8 @@ public class GameplayController :  Singleton<GameplayController>
     void Start()
     {
         EventManager.Instance.AddListener<GameStateChangedEvent>(OnGameStateChanged);
-    }
 
+    }
     protected override void OnDestroy()
     {
         base.OnDestroy();
@@ -52,6 +52,8 @@ public class GameplayController :  Singleton<GameplayController>
         }
         timeSinceGameStart = 0.0f;
         isGameRunning = true;
+        EventManager.Instance.Raise(new GameStartEvent {});
+
     }
 
     void TogglePauseGame(bool toggle)
@@ -86,6 +88,7 @@ public class GameplayController :  Singleton<GameplayController>
         SoundManager.Instance.PlayGameOver();
         UIManager.Instance.DisplayEndGame();
         isGameRunning = false;
+        EventManager.Instance.Raise(new GameOverEvent {});
     }
 
     void RecordSavedData()
@@ -98,4 +101,7 @@ public class GameplayController :  Singleton<GameplayController>
         gameLogic.highScore = incomingSaveData.highScore;
     }
 }
+
+public class GameStartEvent : GameEvent { }
+public class GameOverEvent : GameEvent { }
 }
