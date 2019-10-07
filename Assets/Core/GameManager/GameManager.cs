@@ -66,7 +66,7 @@ public class GameManager : Manager<GameManager>
 
     public void TogglePause()
     {
-        UpdateState(CurrentGameState != GameState.Running ?
+        UpdateState(CurrentGameState == GameState.Running ?
             GameState.Paused : GameState.Running);
     }
 
