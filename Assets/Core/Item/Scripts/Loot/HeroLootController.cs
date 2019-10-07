@@ -38,7 +38,12 @@ namespace GDG
             {
                 GameObject go = other.gameObject;
                 DropBase drop = go.GetComponent<DropBase>();
-                if (drop.itemDrop.PickUpWhenInRange())
+                if (drop == null)
+                {
+                    Debug.Log("Collided with another Item");
+                    return;
+                }
+                else if (drop.itemDrop.PickUpWhenInRange())
                 {
                     takeItem(drop);
                 }

@@ -33,7 +33,7 @@ namespace GDG
             droppedItem.transform.parent = dropBase.transform;
             droppedItem.transform.position = dropBase.transform.position;
 
-            var item = droppedItem.GetComponent<IItem>();
+            var item = droppedItem.GetComponentInChildren<IItem>();
             var drop = dropBase.GetComponent<DropBase>();
             if (item == null)
             {
@@ -47,6 +47,7 @@ namespace GDG
             {
                 drop.itemDrop = item;
             }
+            Debug.Log(dropPrefab.name);
         }
     }
 }

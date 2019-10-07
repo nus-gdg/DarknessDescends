@@ -411,8 +411,20 @@ MonoBehaviour:
   healthBarGreen: {fileID: 922906579}
   healthBarLength: 0
   invulnerabilityTime: 0
-  DropList: []
-  dropChanceRange: 0
+  DropList:
+  - dropPrefab: {fileID: 1553698910649348739, guid: 5271ad040942cfd42a88316ed154008b,
+      type: 3}
+    weightage: 50
+  - dropPrefab: {fileID: 9031297210865390737, guid: 88c35634075cc3f49bf71a592e14a1d1,
+      type: 3}
+    weightage: 40
+  - dropPrefab: {fileID: 2383709730508006846, guid: 24ed52dfc35298c42b096bdaddda8906,
+      type: 3}
+    weightage: 5
+  - dropPrefab: {fileID: 5726722513950594888, guid: c932a67efacb80b4cb0886c2db668400,
+      type: 3}
+    weightage: 5
+  dropChanceRange: 100
   RewardScore: 2
 --- !u!114 &7559787464993504235
 MonoBehaviour:

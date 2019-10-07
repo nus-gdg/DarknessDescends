@@ -7,8 +7,8 @@ namespace GDG
     public class Enemy : Character, IEnemy
     {
         public List<DropChancePair> DropList;
-        public int dropChanceRange;
         public int RewardScore;
+        private int dropChanceRange;
 
         IEnumerator Start()
         {

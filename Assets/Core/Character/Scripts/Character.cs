@@ -38,6 +38,7 @@ public class Character : MonoBehaviour, ICharacter
         healthBar.SetActive(false);
         controller = GetComponent<MovementController>();
         characterAnimator = GetComponent<CharacterAnimator>();
+        characterStats = Instantiate(characterStats);
     }
 
     void Update()
