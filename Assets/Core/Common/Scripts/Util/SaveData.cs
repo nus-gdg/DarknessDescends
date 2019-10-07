@@ -35,5 +35,11 @@ public class SaveData
         Debug.Log("Failed to load save data.");
         return null;
     }
+
+    public static void DeleteSaveData()
+    {
+        File.Delete(Application.persistentDataPath + "/save.savedData");
+        Debug.Log("Save data deleted.");
+    }
 }
 }

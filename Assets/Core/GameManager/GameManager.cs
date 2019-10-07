@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GDG
 {
@@ -73,6 +74,7 @@ public class GameManager : Manager<GameManager>
     public void RestartGame()
     {
         UpdateState(GameState.Pregame);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

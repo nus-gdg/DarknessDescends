@@ -68,6 +68,11 @@ public class GameplayController :  Singleton<GameplayController>
             timeSinceGameStart += timeElapsedFromPreviousFrame;
             UIManager.Instance.UpdateTime(timeSinceGameStart);
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SaveData.DeleteSaveData();
+        }
     }
 
     public void OnEnemyDeath(IEnemy enemy)
