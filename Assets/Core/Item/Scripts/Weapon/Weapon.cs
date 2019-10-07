@@ -34,6 +34,11 @@ public abstract class Weapon : MonoBehaviour, IItem
         Destroy(gameObject);
     }
 
+    public bool PickUpWhenInRange()
+    {
+        return false;
+    }
+
     public abstract void Use();
 }
 }

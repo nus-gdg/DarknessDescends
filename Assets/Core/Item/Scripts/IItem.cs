@@ -10,5 +10,6 @@ public interface IItem
     void OnPickUp(ICharacter character);
     void SetParentTransform(Transform t);
     void Destroy();
+    bool PickUpWhenInRange();
 }
 }

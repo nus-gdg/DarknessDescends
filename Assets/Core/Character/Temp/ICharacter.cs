@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace GDG
 {
-public interface ICharacter : IDamagee
+public interface ICharacter : IDamagee, IHealee
 {
     ICharacterStats GetCharacterStats(); // not needed for now
     void PickUp(IItem item);

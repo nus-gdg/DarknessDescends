@@ -10,11 +10,11 @@ namespace GDG
     {
         private IHero hero;
 
-        private List<GameObject> lootInRange;
+        private List<DropBase> lootInRange;
         void Start()
         {
             hero = GetComponent<IHero>();
-            lootInRange = new List<GameObject>();
+            lootInRange = new List<DropBase>();
             var boxCollider = gameObject.AddComponent<BoxCollider2D>();
             boxCollider.isTrigger = true;
         }
@@ -22,17 +22,11 @@ namespace GDG
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-
                 if (lootInRange.Count > 0)
                 {
-                    GameObject go = lootInRange[0];
+                    DropBase drop = lootInRange[0];
                     lootInRange.RemoveAt(0);
-
-                    DropBase drop = go.GetComponent<DropBase>();
-                    IItem randomitem = drop.TakeItem();
-                    randomitem.OnPickUp(hero);
-                    SoundManager.Instance.PlayPickup();
-
+                    takeItem(drop);
                     Debug.Log("Item Looted");
                 }
             }
@@ -42,17 +36,36 @@ namespace GDG
         {
             if (other.tag == "Item")
             {
-                lootInRange.Add(other.gameObject);
+                GameObject go = other.gameObject;
+                DropBase drop = go.GetComponent<DropBase>();
+                if (drop.itemDrop.PickUpWhenInRange())
+                {
+                    takeItem(drop);
+                }
+                else
+                {
+                    lootInRange.Add(drop);
+                }
                 Debug.Log("Item in Range");
             }
         }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.tag == "Item")
             {
-                lootInRange.Remove(other.gameObject);
+                GameObject go = other.gameObject;
+                DropBase drop = go.GetComponent<DropBase>();
+                lootInRange.Remove(drop);
                 Debug.Log("Item out of Range");
             }
+        }
+
+        private void takeItem(DropBase drop)
+        {
+            IItem item = drop.TakeItem();
+            item.OnPickUp(hero);
+            SoundManager.Instance.PlayPickup();
         }
 
         /*

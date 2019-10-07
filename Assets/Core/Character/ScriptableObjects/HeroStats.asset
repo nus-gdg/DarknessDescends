@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3097dc3765e2fd04693bbb1cea6d4300, type: 3}
   m_Name: HeroStats
   m_EditorClassIdentifier: 
-  totalHealth: 99999
+  totalHealth: 10

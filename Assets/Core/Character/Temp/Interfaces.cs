@@ -11,4 +11,9 @@ public interface IDamagee
     void Damage(float amount);
     void KnockBackFromDamage(Vector3 impulse);
 }
+
+public interface IHealee
+{
+    void Heal(float amount);
+}
 }

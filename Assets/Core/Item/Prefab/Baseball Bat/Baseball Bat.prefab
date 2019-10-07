@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5434603576996550353}
   - component: {fileID: 5434603576996550354}
   - component: {fileID: 5434603576996550355}
-  - component: {fileID: 5434603576996550357}
-  - component: {fileID: 5434603576996550359}
+  - component: {fileID: 4456465663448490779}
+  - component: {fileID: -2682166241159848379}
   m_Layer: 10
   m_Name: Baseball Bat
   m_TagString: Item
@@ -129,7 +129,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.06352945, y: 0.42}
   m_EdgeRadius: 0
---- !u!114 &5434603576996550357
+--- !u!114 &4456465663448490779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,10 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2139189132550263167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711ef09182f0fec48959625da1e1cc89, type: 3}
+  m_Script: {fileID: 11500000, guid: 58ea34ee777af3f408a5eb9176a29717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5434603576996550359
+--- !u!114 &-2682166241159848379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,10 +150,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2139189132550263167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0682e68f2e51a164689a788091262842, type: 3}
+  m_Script: {fileID: 11500000, guid: acbc56c7cfc81ca4f9c69e7210e5fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 25
-  forceDirection: {x: 30, y: 10, z: 0}
-  damageAmount: 30
+  force: 10
+  forceDirection: {x: 1, y: 1, z: 0}
+  damageAmount: 10
   damageSource: 0

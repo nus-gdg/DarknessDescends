@@ -130,7 +130,7 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
-    public void Heal(int i)
+    public void Heal(float i)
     {
         characterStats.Heal(i);
         var currentHealth = characterStats.GetCurrentHealth();
