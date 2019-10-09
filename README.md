@@ -10,3 +10,4 @@ Project of AY2019/2020. Make awesome weapons, and make cooler enemies for your c
 * [*Spawning*](Docs/Spawning.md): How to Spawn enemies and create new Spawners
 * [*Platforming*](Docs/Platforming.md): All docs related to how Platforms work
 * [*Loot*](Docs/Loot.md): All docs related to how Loot works
+* [*Weapon*](Docs/Weapon.md): About weapons and a guide on creating your own weapon
