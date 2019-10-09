@@ -1,187 +1,86 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using GDG;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
-// DEPRECATED
-public class GameManager : MonoBehaviour
+namespace GDG
 {
-    SavedData savedData;
-
-    int score = 0;
-    int highScore;
-    int enemiesDefeated = 0;
-    float timeSinceGameStart = 0.0f;
-    bool playerDead = false;
-
-    public Text scoreDisplay;
-    public Text highScoreDisplay;
-    public Text timeDisplay;
-    public Text endgameDisplay;
-    public GameObject pauseMenu;
-
-    public List <GameObject> spawnerList;
-
-    void Awake()
+public class GameManager : Manager<GameManager>
+{
+    public enum GameState
     {
-        savedData = LoadSavedData();
+        Pregame,
+        Running,
+        Paused,
+        Postgame
+    }
+    public GameState CurrentGameState { get; set; } = GameState.Pregame;
 
-        if(savedData != null)
-        {
-            UpdateStateBasedOnSavedData(savedData);
-        }
-
-        endgameDisplay.enabled = false;
-        scoreDisplay.text = score.ToString();
-        highScoreDisplay.text = highScore.ToString();
+    void Start()
+    {
+        UpdateState(GameState.Running);
     }
 
     void Update()
     {
-        if(!playerDead){
-            float timeElapsedFromPreviousFrame = Time.deltaTime;
-            timeSinceGameStart += timeElapsedFromPreviousFrame;
-            SendSignalToSpawnPoints(timeElapsedFromPreviousFrame);
-            timeDisplay.text = timeSinceGameStart.ToString();
-        }
-
-        if(playerDead && Input.GetKeyDown("r"))
+        if (CurrentGameState == GameState.Pregame)
         {
-            RecordSavedData();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-        if(playerDead && Input.GetKeyDown("f"))
-        {
-            DeleteSavedData();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Pause();
+            TogglePause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
         }
     }
 
-    void SendSignalToSpawnPoints(float timeElapsedFromPreviousFrame)
+    private void UpdateState(GameState state)
     {
-        foreach(GameObject spawner in spawnerList)
+        GameState previousGameState = CurrentGameState;
+        CurrentGameState = state;
+
+        // ReSharper disable once SwitchStatementMissingSomeCases
+        switch (CurrentGameState)
         {
-            spawner.GetComponent<EnemySpawner>().ReceiveTimePassed(timeElapsedFromPreviousFrame);
+            case GameState.Pregame:
+                Time.timeScale = 1.0f;
+                break;
+            case GameState.Running:
+                Time.timeScale = 1.0f;
+                break;
+            case GameState.Paused:
+                Time.timeScale = 0.0f;
+                break;
         }
+        EventManager.Instance.Raise(new GameStateChangedEvent
+            {
+                currentGameState = CurrentGameState,
+                previousGameState = previousGameState
+            }
+        );
     }
 
-    public void increaseScore(int increaseInScore)
+    public void TogglePause()
     {
-        score += increaseInScore;
-
-        if(highScore < score)
-        {
-            highScore = score;
-            highScoreDisplay.text = highScore.ToString();
-        }
-
-        scoreDisplay.text = score.ToString();
+        UpdateState(CurrentGameState == GameState.Running ?
+            GameState.Paused : GameState.Running);
     }
 
-    public void OnCharacterDeath(Character character, CharacterDeathReason reason)
+    public void RestartGame()
     {
-        if(character.tag == "Player")
-        {
-            playerCharacterDies();
-        }
-        else if (reason == CharacterDeathReason.KILLED_BY_DAMAGE) // record deaths if killed by player
-        {
-            // enemyDies(character.rewardUponDeath);
-        }
+        UpdateState(GameState.Pregame);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+}
 
-    public void enemyDies(int increaseInScore)
-    {
-        increaseScore(increaseInScore);
-        enemiesDefeated++;
-    }
-
-
-    public void playerCharacterDies()
-    {
-        SoundController.theController.playSound(SoundController.theController.gameover);
-        playerDead = true;
-        endgameDisplay.enabled = true;
-    }
-
-    void RecordSavedData()
-    {
-        savedData = new SavedData();
-
-        savedData.highScore = highScore;
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/save.savedData");
-        bf.Serialize(file, savedData);
-        file.Close();
-
-        Debug.Log("Data saved");
-    }
-
-    SavedData LoadSavedData()
-    {
-        if(File.Exists(Application.persistentDataPath + "/save.savedData"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/save.savedData", FileMode.Open);
-            SavedData returnValue = (SavedData) bf.Deserialize(file);
-            file.Close();
-
-            Debug.Log("Save data found.");
-
-            return returnValue;
-        }
-
-        Debug.Log("Failed to load save data.");
-        return null;
-    }
-
-    void UpdateStateBasedOnSavedData(SavedData incomingSaveData)
-    {
-        highScore = incomingSaveData.highScore;
-    }
-
-    void DeleteSavedData()
-    {
-        File.Delete(Application.persistentDataPath + "/save.savedData");
-        Debug.Log("Save data deleted.");
-    }
-
-    public void Pause()
-    {
-        if (Time.timeScale == 1f)
-        {
-            Time.timeScale = 0f;
-            pauseMenu.SetActive(true);
-        }
-        else if (Time.timeScale == 0f)
-        {
-            Time.timeScale = 1f;
-            pauseMenu.SetActive(false);
-        }
-    }
-
-    public void ToggleSound()
-    {
-        Text muteButtonText = pauseMenu.transform.Find("Mute Button/Text").GetComponent<Text>();
-        if (AudioListener.volume == 0f)
-        {
-            AudioListener.volume = 1f;
-            muteButtonText.text = "Mute";
-        } else
-        {
-            AudioListener.volume = 0f;
-            muteButtonText.text = "Unmute";
-        }
-    }
+public class GameStateChangedEvent : GameEvent
+{
+    public GameManager.GameState currentGameState;
+    public GameManager.GameState previousGameState;
+}
 }
