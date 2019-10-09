@@ -12,8 +12,9 @@ public class GameplayController :  Singleton<GameplayController>
     float timeSinceGameStart = 0.0f;
     SaveData saveData;
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         EventManager.Instance.AddListener<GameStateChangedEvent>(OnGameStateChanged);
 
     }

@@ -16,7 +16,7 @@ public class FixedIntervalSingleTypeSpawner : EnemySpawner
 
     private bool isGameRunning = false;
 
-    void Start()
+    void Awake()
     {
         EventManager.Instance.AddListener<GameStartEvent>(OnGameStart);
         EventManager.Instance.AddListener<GameOverEvent>(OnGameOver);
