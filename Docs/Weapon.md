@@ -11,7 +11,8 @@ Create your weapon script. For this example we will name it `SwingingWeapon.cs` 
 Create a `GameObject` with has a `Collider2D` (Box, Circle) and a `Damager` script. You can think of Damagers as Hit Boxes which apply damage to characters on collision. We will use our `Collider2D` to detect collisions and the `Damager` component applies damage to intersecting Characters.
 Naturally we will need some visuals, you can use a `SpriteRenderer` with an appropriate sprite.
 
-**NOTE:** Disable the `Collider2D`, we will be using our weapon script to disable or enable the collider.
+**NOTE:** 
+Disable the `Collider2D`, we will be using our weapon script to disable or enable the collider. Also, make sure you make your collider a `trigger` collider.
 
 ```cs
 using System.Collections;
